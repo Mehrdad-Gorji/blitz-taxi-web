@@ -3,105 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blitz Taxi Yildirim — Hamburg · Buchen &amp; bezahlen</title>
+<title>Fahrerportal — Blitz Taxi Yildirim</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<style>
+  /* Dashboard specific styles */
+  body { background: #080B12; color: #fff; margin: 0; padding: 0; }
+  .d-wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .d-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #1D2635; margin-bottom: 30px; }
+  .d-header .d-brand { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+  .d-header .user-info { display: flex; align-items: center; gap: 15px; font-family: 'Inter', sans-serif; }
+  .d-avatar { width: 40px; height: 40px; background: #2A3547; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 700; color: #F2B34B; }
+  .logout-btn { background: none; border: 1px solid #2A3547; color: #A0B2C6; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: 0.2s; text-decoration: none; }
+  .logout-btn:hover { background: #1D2635; color: #fff; }
+  
+  .d-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px; }
+  .d-card { background: #0C1019; border: 1px solid #1D2635; border-radius: 12px; padding: 24px; position: relative; overflow: hidden; }
+  .d-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, #F2B34B, transparent); opacity: 0.5; }
+  .d-card .label { font-size: 0.85rem; color: #A0B2C6; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-family: 'Space Mono', monospace; }
+  .d-card .val { font-size: 2rem; font-weight: 700; font-family: 'Sora', sans-serif; color: #fff; }
+  .d-card .val span { font-size: 1rem; color: #4CAF50; margin-left: 10px; font-weight: 500; }
+  
+  .d-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+  .d-section { background: #0C1019; border: 1px solid #1D2635; border-radius: 12px; padding: 30px; }
+  .d-section h3 { font-family: 'Sora', sans-serif; font-size: 1.2rem; margin-bottom: 20px; margin-top: 0; display: flex; align-items: center; gap: 10px; }
+  
+  /* Table for payslips */
+  .d-table { width: 100%; border-collapse: collapse; text-align: left; }
+  .d-table th { color: #A0B2C6; font-size: 0.85rem; text-transform: uppercase; padding-bottom: 15px; border-bottom: 1px solid #1D2635; }
+  .d-table td { padding: 15px 0; border-bottom: 1px solid #1D2635; font-family: 'Inter', sans-serif; font-size: 0.95rem; }
+  .d-table tr:last-child td { border-bottom: none; }
+  .btn-dl { background: rgba(242, 179, 75, 0.1); color: #F2B34B; border: 1px solid rgba(242, 179, 75, 0.2); padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px; transition: 0.2s; }
+  .btn-dl:hover { background: #F2B34B; color: #000; }
+  
+  /* Status pill */
+  .pill { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+  .pill.active { background: rgba(76, 175, 80, 0.15); color: #4CAF50; }
+  .pill.paid { background: rgba(33, 150, 243, 0.15); color: #2196F3; }
+
+  /* Login Overlay */
+  #login-overlay { position: fixed; inset: 0; background: #080B12; z-index: 1000; display: flex; justify-content: center; align-items: center; }
+  .login-box { background: #0C1019; border: 1px solid #1D2635; border-radius: 12px; padding: 40px; width: 100%; max-width: 400px; text-align: center; }
+  .login-box h2 { font-family: 'Sora', sans-serif; margin-bottom: 10px; }
+  .login-box p { color: #A0B2C6; font-size: 0.9rem; margin-bottom: 30px; }
+  .login-input { width: 100%; background: #080B12; border: 1px solid #2A3547; color: #fff; padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; font-family: 'Inter', sans-serif; font-size: 1rem; box-sizing: border-box; }
+  .login-input:focus { outline: none; border-color: #F2B34B; }
+  .login-btn { width: 100%; background: #F2B34B; color: #000; font-weight: 600; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: 0.2s; font-family: 'Sora', sans-serif; }
+  .login-btn:hover { background: #e0a23d; }
+  
+  /* Responsive */
+  @media(max-width: 900px) {
+    .d-grid { grid-template-columns: repeat(2, 1fr); }
+    .d-layout { grid-template-columns: 1fr; }
+  }
+  @media(max-width: 500px) {
+    .d-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
-<div id="progress"></div>
-<div id="glow"></div>
-
-<div class="announce">
-  <div class="wrap">
-    <span><svg class="ic"><use href="#i-clock"/></svg> <b class="i18n" data-de="24/7 verfügbar" data-en="Available 24/7">24/7 verfügbar</b></span>
-    <span><svg class="ic"><use href="#i-euro"/></svg> <span class="i18n" data-de="Festpreis garantiert" data-en="Fixed price guaranteed">Festpreis garantiert</span></span>
-    <span><svg class="ic"><use href="#i-card"/></svg> <span class="i18n" data-de="Bargeldlos zahlen" data-en="Cashless payment">Bargeldlos zahlen</span></span>
-    <span><svg class="ic"><use href="#i-phone"/></svg> +49 40 555 0 555</span>
+<!-- Login Overlay -->
+<div id="login-overlay">
+  <div class="login-box">
+    <div style="color: #F2B34B; margin-bottom: 20px;"><svg viewBox="0 0 24 24" width="40" height="40"><path d="M13 2 L4 14 L11 14 L10 22 L20 9 L13 9 Z" fill="currentColor"/></svg></div>
+    <h2 class="i18n" data-de="Fahrerportal Login" data-en="Driver Portal Login">Fahrerportal Login</h2>
+    <p class="i18n" data-de="Bitte loggen Sie sich mit Ihrer Personalnummer ein." data-en="Please log in with your staff ID.">Bitte loggen Sie sich mit Ihrer Personalnummer ein.</p>
+    <input type="text" class="login-input" placeholder="Personalnummer (z.B. 10042)" value="10042">
+    <input type="password" class="login-input" placeholder="Passwort" value="********">
+    <button class="login-btn i18n" data-de="Einloggen" data-en="Log In" onclick="document.getElementById('login-overlay').style.display='none'">Einloggen</button>
   </div>
 </div>
 
-<header>
-  <div class="wrap nav">
-    <div class="brand">
-      <span class="bolt"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M13 2 L4 14 L11 14 L10 22 L20 9 L13 9 Z" fill="#F2B34B"/></svg></span>
+<div class="d-wrap">
+  <header class="d-header">
+    <div class="d-brand">
+      <span style="color:#F2B34B"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M13 2 L4 14 L11 14 L10 22 L20 9 L13 9 Z" fill="currentColor"/></svg></span>
       BLITZ TAXI
-      <small>Yildirim · Hamburg</small>
+      <span style="color:#A0B2C6; font-size:0.9rem; font-weight:400; margin-left:10px;" class="i18n" data-de="Fahrerportal" data-en="Driver Portal">Fahrerportal</span>
     </div>
-    <nav class="links">
-      <a href="index.html#buchen" class="i18n" data-de="Buchen" data-en="Book">Buchen</a>
-      <a href="index.html#flotte" class="i18n" data-de="Flotte" data-en="Fleet">Flotte</a>
-      <a href="index.html#preise" class="i18n" data-de="Preise" data-en="Pricing">Preise</a>
-      <a href="index.html#gebiet" class="i18n" data-de="Gebiet" data-en="Coverage">Gebiet</a>
-      <a href="index.html#firmen" class="i18n" data-de="Firmen" data-en="Business">Firmen</a>
-      <a href="index.html#faq" class="i18n" data-de="FAQ" data-en="FAQ">FAQ</a>
-    </nav>
-    <div class="nav-right">
-      <div class="lang"><button id="btn-de" class="active">DE</button><button id="btn-en">EN</button></div>
-      <a href="index.html#buchen" class="btn btn-gold i18n" data-de="Jetzt buchen" data-en="Book now">Jetzt buchen</a>
-    </div>
-  </div>
-</header>
-<main style="padding: 120px 0; min-height: 60vh;">
-  <div class="wrap">
-    <div class="sec-head">
-      <h1 class="i18n" data-de="Fahrer:in werden" data-en="Become a driver">Fahrer:in werden</h1>
-      <p class="i18n" data-de="Inhalte folgen in Kürze..." data-en="Content coming soon...">Inhalte folgen in Kürze...</p>
-    </div>
-  </div>
-</main>
-<footer id="kontakt">
-  <div class="wrap">
-    <div class="fgrid">
-      <div class="fcol">
-        <div class="fbrand"><span class="bolt"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M13 2 L4 14 L11 14 L10 22 L20 9 L13 9 Z" fill="#F2B34B"/></svg></span> BLITZ TAXI</div>
-        <p class="i18n" data-de="Ihr Festpreis-Taxi für Hamburg und Umgebung. 24 Stunden am Tag, 7 Tage die Woche." data-en="Your fixed-price taxi for Hamburg and surroundings. 24 hours a day, 7 days a week.">Ihr Festpreis-Taxi für Hamburg und Umgebung. 24 Stunden am Tag, 7 Tage die Woche.</p>
+    <div class="user-info">
+      <div style="text-align: right;">
+        <div style="font-weight: 600; font-size: 0.95rem;">Mustafa Yilmaz</div>
+        <div style="font-size: 0.8rem; color: #4CAF50;">Fahrzeug: HH-BT 2026</div>
       </div>
-      <div class="fcol"><h4 class="i18n" data-de="Kontakt" data-en="Contact">Kontakt</h4><a href="tel:+4940555055">+49 40 555 0 555</a><a href="mailto:info@blitztaxi-yildirim.de">info@blitztaxi-yildirim.de</a><p class="i18n" data-de="Speicherstadt 12, 20457 Hamburg" data-en="Speicherstadt 12, 20457 Hamburg">Speicherstadt 12, 20457 Hamburg</p></div>
-      <div class="fcol"><h4 class="i18n" data-de="Unternehmen" data-en="Company">Unternehmen</h4><a href="#flotte" class="i18n" data-de="Flotte" data-en="Fleet">Flotte</a><a href="#firmen" class="i18n" data-de="Für Firmenkunden" data-en="For business">Für Firmenkunden</a><a href="fahrer.html" class="i18n" data-de="Fahrer:in werden" data-en="Become a driver">Fahrer:in werden</a></div>
-      <div class="fcol"><h4 class="i18n" data-de="Rechtliches" data-en="Legal">Rechtliches</h4><a href="impressum.html" class="i18n" data-de="Impressum" data-en="Legal notice">Impressum</a><a href="datenschutz.html" class="i18n" data-de="Datenschutz" data-en="Privacy">Datenschutz</a><a href="agb.html" class="i18n" data-de="AGB" data-en="Terms">AGB</a></div>
+      <div class="d-avatar">MY</div>
+      <a href="index.html" class="logout-btn i18n" data-de="Abmelden" data-en="Logout">Abmelden</a>
     </div>
-    <div class="fbot">
-      <div>© 2026 Blitz Taxi Yildirim</div>
-      <div class="i18n" data-de="Konzessioniert nach § 47 PBefG" data-en="Licensed under § 47 PBefG">Konzessioniert nach § 47 PBefG</div>
+  </header>
+
+  <!-- Metrics Grid -->
+  <div class="d-grid">
+    <div class="d-card">
+      <div class="label i18n" data-de="Umsatz Heute" data-en="Today's Revenue">Umsatz Heute</div>
+      <div class="val">284,50 €</div>
+    </div>
+    <div class="d-card">
+      <div class="label i18n" data-de="Umsatz Woche (Laufend)" data-en="Weekly Revenue">Umsatz Woche (Laufend)</div>
+      <div class="val">1.240,00 € <span>+12%</span></div>
+    </div>
+    <div class="d-card">
+      <div class="label i18n" data-de="Fahrten Heute" data-en="Trips Today">Fahrten Heute</div>
+      <div class="val">14 <span>Ø 20,32 €</span></div>
+    </div>
+    <div class="d-card">
+      <div class="label i18n" data-de="Bewertung" data-en="Rating">Bewertung</div>
+      <div class="val">4.9 <span style="color:#F2B34B">★</span></div>
     </div>
   </div>
-</footer>
 
-<div class="mcta">
-  <div class="p"><b id="mfare">ab 38,00 €</b><small class="i18n" data-de="Festpreis · HafenCity → HAM" data-en="Fixed price · HafenCity → HAM">Festpreis · HafenCity → HAM</small></div>
-  <a href="#buchen" class="btn btn-gold i18n" data-de="Buchen" data-en="Book">Buchen</a>
+  <!-- Layout -->
+  <div class="d-layout">
+    <!-- Left Col: Payslips -->
+    <div class="d-section">
+      <h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2B34B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <span class="i18n" data-de="Lohnabrechnungen (Fisch-e Hoghughi)" data-en="Payslips (Fisch-e Hoghughi)">Lohnabrechnungen (Fisch-e Hoghughi)</span>
+      </h3>
+      <p style="color: #A0B2C6; font-size: 0.9rem; margin-bottom: 20px;" class="i18n" data-de="Hier können Sie Ihre monatlichen Gehaltsnachweise und Schichtauswertungen im PDF-Format herunterladen." data-en="Here you can download your monthly payslips and shift reports in PDF format.">Hier können Sie Ihre monatlichen Gehaltsnachweise und Schichtauswertungen im PDF-Format herunterladen.</p>
+      
+      <table class="d-table">
+        <thead>
+          <tr>
+            <th class="i18n" data-de="Monat" data-en="Month">Monat</th>
+            <th class="i18n" data-de="Netto Lohn" data-en="Net Pay">Netto Lohn</th>
+            <th class="i18n" data-de="Status" data-en="Status">Status</th>
+            <th class="i18n" data-de="Aktion" data-en="Action">Aktion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Juli 2026</strong></td>
+            <td>2.840,15 €</td>
+            <td><span class="pill paid i18n" data-de="Überwiesen" data-en="Paid">Überwiesen</span></td>
+            <td><a href="#" class="btn-dl" onclick="alert('Demo: Lohnabrechnung_07_2026.pdf wird heruntergeladen')">↓ <span class="i18n" data-de="PDF Download" data-en="Download PDF">PDF Download</span></a></td>
+          </tr>
+          <tr>
+            <td><strong>Juni 2026</strong></td>
+            <td>2.690,00 €</td>
+            <td><span class="pill paid i18n" data-de="Überwiesen" data-en="Paid">Überwiesen</span></td>
+            <td><a href="#" class="btn-dl" onclick="alert('Demo: Lohnabrechnung_06_2026.pdf wird heruntergeladen')">↓ <span class="i18n" data-de="PDF Download" data-en="Download PDF">PDF Download</span></a></td>
+          </tr>
+          <tr>
+            <td><strong>Mai 2026</strong></td>
+            <td>2.915,30 €</td>
+            <td><span class="pill paid i18n" data-de="Überwiesen" data-en="Paid">Überwiesen</span></td>
+            <td><a href="#" class="btn-dl" onclick="alert('Demo: Lohnabrechnung_05_2026.pdf wird heruntergeladen')">↓ <span class="i18n" data-de="PDF Download" data-en="Download PDF">PDF Download</span></a></td>
+          </tr>
+          <tr>
+            <td><strong>April 2026</strong></td>
+            <td>2.750,45 €</td>
+            <td><span class="pill paid i18n" data-de="Überwiesen" data-en="Paid">Überwiesen</span></td>
+            <td><a href="#" class="btn-dl" onclick="alert('Demo: Lohnabrechnung_04_2026.pdf wird heruntergeladen')">↓ <span class="i18n" data-de="PDF Download" data-en="Download PDF">PDF Download</span></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Right Col: Quick Info -->
+    <div class="d-section" style="background: linear-gradient(180deg, #121824, #080B12);">
+      <h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2B34B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <span class="i18n" data-de="Dein Status" data-en="Your Status">Dein Status</span>
+      </h3>
+      
+      <div style="margin-top: 30px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="font-family: 'Space Mono', monospace; font-size: 0.85rem; color:#A0B2C6">SCHICHTDAUER</span>
+          <span style="font-family: 'Space Mono', monospace; font-size: 0.85rem; color:#fff">06:45 / 08:00 h</span>
+        </div>
+        <div style="width: 100%; height: 8px; background: #1D2635; border-radius: 4px; overflow: hidden;">
+          <div style="width: 85%; height: 100%; background: #F2B34B; border-radius: 4px;"></div>
+        </div>
+      </div>
+
+      <div style="margin-top: 30px; padding: 20px; background: rgba(76, 175, 80, 0.05); border: 1px solid rgba(76, 175, 80, 0.2); border-radius: 8px;">
+        <div style="color: #4CAF50; font-weight: 600; margin-bottom: 5px; font-size: 0.95rem;">✅ Fahrzeug Check-in OK</div>
+        <div style="font-size: 0.85rem; color: #A0B2C6; line-height: 1.5;">NIO ET7 (HH-BT 2026)<br>Batteriestand: 84%<br>Nächste Wartung: 12.09.2026</div>
+      </div>
+
+      <div style="margin-top: 30px;">
+        <a href="index.html" style="color: #A0B2C6; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
+          ← <span class="i18n" data-de="Zurück zur Startseite" data-en="Back to homepage">Zurück zur Startseite</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <g id="i-arrow"><path d="M5 12h14M13 6l6 6-6 6"/></g>
-    <g id="i-euro"><path d="M18 7a7 7 0 1 0 0 10M4 10h9M4 14h9"/></g>
-    <g id="i-card"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></g>
-    <g id="i-pin"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></g>
-    <g id="i-flag"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></g>
-    <g id="i-plane"><path d="M10 3 4 14l3 1 2 6 3-6 6-2-4-3 1-6-5 3Z" transform="rotate(0 12 12)"/></g>
-    <g id="i-globe"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></g>
-    <g id="i-calendar"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9h16M8 3v4M16 3v4"/></g>
-    <g id="i-clock"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g>
-    <g id="i-phone"><path d="M6 3h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2Z"/></g>
-    <g id="i-check"><path d="M4 12l5 5L20 6"/></g>
-    <g id="i-plus"><path d="M12 5v14M5 12h14"/></g>
-    <g id="i-star"><path d="m12 3 2.6 5.6L21 9.3l-4.5 4.2 1.1 6.1L12 16.9 6.4 19.6l1.1-6.1L3 9.3l6.4-.7L12 3Z"/></g>
-    <g id="i-shield"><path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6l8-3Z"/><path d="M9 12l2 2 4-4"/></g>
-    <g id="i-bolt"><path d="M13 3 5 13h6l-1 8 8-11h-6l1-7Z"/></g>
-    <g id="i-swap"><path d="M7 4v16M7 4 4 7M7 4l3 3M17 20V4M17 20l3-3M17 20l-3-3"/></g>
-    <g id="i-share"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8 15.8 7.2M8.2 13.2l7.6 3.6"/></g>
-    <g id="i-file"><path d="M6 3h8l4 4v14H6V3Z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></g>
-    <g id="i-users"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0M16 5.5a3 3 0 0 1 0 5.6M21 20a6 6 0 0 0-4-5.6"/></g>
-    <g id="i-apple"><path d="M16 13c0 3 2 4 2 4s-1.4 3-3 3c-1 0-1.5-.6-2.6-.6S11 20 10 20c-1.7 0-3-3-3-5.5C7 11 9 10 10.5 10c1 0 1.7.6 2.5.6S14.5 10 16 10c-.3.6-.5 1.6 0 3Z" fill="currentColor" stroke="none"/><path d="M13 7c.8-1 1-2 1-3" fill="none"/></g>
-    <g id="i-play"><path d="M5 3.5 19 12 5 20.5V3.5Z"/></g>
-  </defs>
-</svg>
 
 <script src="js/main.js"></script>
-
 </body>
 </html>
