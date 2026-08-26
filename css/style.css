@@ -312,6 +312,32 @@
   .mcta .p{flex:1;}
   .mcta .p b{font-family:var(--mono);color:var(--amber-2);font-size:16px;}
   .mcta .p small{display:block;font-size:11px;color:var(--text-3);}
-  @media(max-width:640px){.mcta{display:flex;}body{padding-bottom:70px;}}
+  @media(max-width:640px){
+    .mcta{display:flex;}
+    body{padding-bottom:70px;}
+    .wrap{padding:0 20px;}
+    .hero h1{font-size:34px;}
+    .hero p.lead{font-size:15px;}
+    .nav-right .btn-gold{display:none;} /* Mobile CTA replaces this */
+    .brand{font-size:17px;}
+    .brow{grid-template-columns:1fr; gap:16px;}
+    .swap{transform:rotate(90deg); right:20px; top:auto; bottom:-22px;}
+    .swap:hover{transform:rotate(270deg);}
+    .booking{padding:20px 16px;}
+    .fgrid{grid-template-columns:1fr; gap:36px;}
+    .fbot{flex-direction:column; text-align:center; gap:8px;}
+    .stats .wrap{grid-template-columns:1fr;}
+    .stat{padding:28px 20px;}
+    .sec-head h2{font-size:30px;}
+    .biz{padding:30px 20px;}
+    .biz h2{font-size:26px;}
+    .cov-map{height:240px;}
+    .phone{width:100%; max-width:320px; height:520px;}
+    .cta .wrap{padding:50px 20px;}
+    .cta h2{font-size:28px;}
+    .feat{padding:24px 20px;}
+    .step{padding:24px 20px;}
+    .fc{padding:24px 20px;}
+  }
 
   @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important;}}

@@ -31,7 +31,8 @@
   .d-section h3 { font-family: 'Sora', sans-serif; font-size: 1.2rem; margin-bottom: 20px; margin-top: 0; display: flex; align-items: center; gap: 10px; }
   
   /* Table for payslips */
-  .d-table { width: 100%; border-collapse: collapse; text-align: left; }
+  .table-responsive { width: 100%; overflow-x: auto; }
+  .d-table { width: 100%; border-collapse: collapse; text-align: left; min-width: 400px; }
   .d-table th { color: #A0B2C6; font-size: 0.85rem; text-transform: uppercase; padding-bottom: 15px; border-bottom: 1px solid #1D2635; }
   .d-table td { padding: 15px 0; border-bottom: 1px solid #1D2635; font-family: 'Inter', sans-serif; font-size: 0.95rem; }
   .d-table tr:last-child td { border-bottom: none; }
@@ -124,6 +125,7 @@
       </h3>
       <p style="color: #A0B2C6; font-size: 0.9rem; margin-bottom: 20px;" class="i18n" data-de="Hier können Sie Ihre monatlichen Gehaltsnachweise und Schichtauswertungen im PDF-Format herunterladen." data-en="Here you can download your monthly payslips and shift reports in PDF format.">Hier können Sie Ihre monatlichen Gehaltsnachweise und Schichtauswertungen im PDF-Format herunterladen.</p>
       
+      <div class="table-responsive">
       <table class="d-table">
         <thead>
           <tr>
@@ -160,6 +162,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
 
     <!-- Right Col: Quick Info -->
