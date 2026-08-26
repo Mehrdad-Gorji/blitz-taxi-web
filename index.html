@@ -77,16 +77,22 @@
           <svg class="taxi" viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Modernes Blitz Taxi fährt durch Hamburg">
             <ellipse cx="130" cy="112" rx="112" ry="7" fill="#000" opacity="0.42"/>
             <path d="M236 74 L270 58 L270 94 L236 80 Z" fill="#F2B34B" opacity="0.28"/>
-            <g class="wheel" style="transform-origin: 55px 90px;">
+            <g>
               <circle cx="55" cy="90" r="18" fill="#0A0E16"/>
               <circle cx="55" cy="90" r="15" fill="none" stroke="#2A3547" stroke-width="4"/>
-              <path d="M55 75 L55 105 M40 90 L70 90 M44 79 L66 101 M44 101 L66 79" stroke="#3A485E" stroke-width="2.5"/>
+              <g>
+                <animateTransform attributeName="transform" type="rotate" from="0 55 90" to="360 55 90" dur="0.45s" repeatCount="indefinite" />
+                <path d="M55 75 L55 105 M40 90 L70 90 M44 79 L66 101 M44 101 L66 79" stroke="#3A485E" stroke-width="2.5"/>
+              </g>
               <circle cx="55" cy="90" r="5" fill="#1D2635"/>
             </g>
-            <g class="wheel" style="transform-origin: 195px 90px;">
+            <g>
               <circle cx="195" cy="90" r="18" fill="#0A0E16"/>
               <circle cx="195" cy="90" r="15" fill="none" stroke="#2A3547" stroke-width="4"/>
-              <path d="M195 75 L195 105 M180 90 L210 90 M184 79 L206 101 M184 101 L206 79" stroke="#3A485E" stroke-width="2.5"/>
+              <g>
+                <animateTransform attributeName="transform" type="rotate" from="0 195 90" to="360 195 90" dur="0.45s" repeatCount="indefinite" />
+                <path d="M195 75 L195 105 M180 90 L210 90 M184 79 L206 101 M184 101 L206 79" stroke="#3A485E" stroke-width="2.5"/>
+              </g>
               <circle cx="195" cy="90" r="5" fill="#1D2635"/>
             </g>
             <path d="M20 85 C 18 70, 20 62, 25 62 C 45 62, 75 34, 110 32 C 140 32, 175 48, 195 62 C 215 65, 235 65, 238 68 C 243 75, 240 88, 232 90 L 217 90 A 22 22 0 0 0 173 90 L 77 90 A 22 22 0 0 0 33 90 L 20 90 Z" fill="#F2B34B"/>

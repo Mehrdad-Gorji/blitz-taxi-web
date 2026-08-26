@@ -107,8 +107,7 @@
   @keyframes zip{from{right:100%;}to{right:-30%;}}
   .taxi{position:absolute;bottom:50px;left:50%;transform:translateX(-50%);width:236px;animation:bob 1.7s ease-in-out infinite;}
   @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-3px);}}
-  .wheel{transform-box:fill-box;transform-origin:center;animation:spin .45s linear infinite;}
-  @keyframes spin{to{transform:rotate(360deg);}}
+
 
   .meter{position:absolute;top:16px;right:8px;background:rgba(20,27,39,0.92);backdrop-filter:blur(6px);border:1px solid var(--line-2);border-radius:12px;padding:15px 17px;min-width:158px;box-shadow:0 22px 50px rgba(0,0,0,0.55);z-index:3;}
   .meter .l{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;color:var(--text-3);text-transform:uppercase;margin-bottom:7px;}
