@@ -99,12 +99,12 @@
   .lane{position:absolute;bottom:42px;left:0;width:220%;height:3px;display:flex;gap:36px;animation:lane 1s linear infinite;}
   .lane i{width:44px;height:3px;background:rgba(242,179,75,0.32);border-radius:2px;flex:0 0 auto;}
   @keyframes lane{from{transform:translateX(0);}to{transform:translateX(-80px);}}
-  .streaks{position:absolute;bottom:70px;right:0;width:60%;height:90px;pointer-events:none;}
-  .streaks i{position:absolute;right:100%;height:2px;background:linear-gradient(90deg,transparent,rgba(127,230,241,0.6));border-radius:2px;animation:zip 1.1s linear infinite;}
+  .streaks{position:absolute;bottom:70px;left:0;width:100%;height:90px;pointer-events:none;}
+  .streaks i{position:absolute;left:100%;height:2px;background:linear-gradient(90deg,rgba(127,230,241,0.6),transparent);border-radius:2px;animation:zip 1.1s linear infinite;}
   .streaks i:nth-child(1){top:16px;width:70px;animation-delay:0s;}
   .streaks i:nth-child(2){top:38px;width:110px;animation-delay:.35s;opacity:.6;}
   .streaks i:nth-child(3){top:58px;width:54px;animation-delay:.6s;opacity:.4;}
-  @keyframes zip{from{right:100%;}to{right:-30%;}}
+  @keyframes zip{from{left:100%;}to{left:-30%;}}
   .taxi{position:absolute;bottom:50px;left:50%;transform:translateX(-50%);width:236px;animation:bob 1.7s ease-in-out infinite;}
   @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-3px);}}
 
