@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blitz Taxi Yildirim — Hamburg · Buchen &amp; bezahlen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="glow"></div>
+
+<div class="announce">
+  <div class="wrap">
+    <span><svg class="ic"><use href="#i-clock"/></svg> <b class="i18n" data-de="24/7 verfügbar" data-en="Available 24/7">24/7 verfügbar</b></span>
+    <span><svg class="ic"><use href="#i-euro"/></svg> <span class="i18n" data-de="Festpreis garantiert" data-en="Fixed price guaranteed">Festpreis garantiert</span></span>
+    <span><svg class="ic"><use href="#i-card"/></svg> <span class="i18n" data-de="Bargeldlos zahlen" data-en="Cashless payment">Bargeldlos zahlen</span></span>
+    <span><svg class="ic"><use href="#i-phone"/></svg> +49 40 555 0 555</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <span class="bolt"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M13 2 L4 14 L11 14 L10 22 L20 9 L13 9 Z" fill="#F2B34B"/></svg></span>
+      BLITZ TAXI
+      <small>Yildirim · Hamburg</small>
+    </div>
+    <nav class="links">
+      <a href="#buchen" class="i18n" data-de="Buchen" data-en="Book">Buchen</a>
+      <a href="#flotte" class="i18n" data-de="Flotte" data-en="Fleet">Flotte</a>
+      <a href="#preise" class="i18n" data-de="Preise" data-en="Pricing">Preise</a>
+      <a href="#gebiet" class="i18n" data-de="Gebiet" data-en="Coverage">Gebiet</a>
+      <a href="#firmen" class="i18n" data-de="Firmen" data-en="Business">Firmen</a>
+      <a href="#faq" class="i18n" data-de="FAQ" data-en="FAQ">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang"><button id="btn-de" class="active">DE</button><button id="btn-en">EN</button></div>
+      <a href="#buchen" class="btn btn-gold i18n" data-de="Jetzt buchen" data-en="Book now">Jetzt buchen</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow i18n" data-de="Festpreis-Taxi · Hamburg" data-en="Fixed-price taxi · Hamburg">Festpreis-Taxi · Hamburg</div>
+        <h1>
+          <span class="blz i18n" data-de="Blitzschnell" data-en="Lightning-fast">Blitzschnell</span><br>
+          <span class="i18n" data-de="durch" data-en="across">durch</span> <span class="volt">Hamburg.</span>
+        </h1>
+        <p class="lead i18n" data-de="Bestellen Sie Ihr Taxi in unter 60 Sekunden. Fester Preis vor der Fahrt, bargeldlose Zahlung, lizenzierte Fahrer:innen — Tag und Nacht." data-en="Order your taxi in under 60 seconds. Fixed price before the ride, cashless payment, licensed drivers — day and night.">Bestellen Sie Ihr Taxi in unter 60 Sekunden. Fester Preis vor der Fahrt, bargeldlose Zahlung, lizenzierte Fahrer:innen — Tag und Nacht.</p>
+        <div class="hero-ctas">
+          <a href="#buchen" class="btn btn-gold i18n" data-de="Fahrt planen" data-en="Plan a ride">Fahrt planen <svg class="ic ar"><use href="#i-arrow"/></svg></a>
+          <a href="#preise" class="btn btn-ghost i18n" data-de="Preise ansehen" data-en="See pricing">Preise ansehen</a>
+        </div>
+        <div class="hero-micro">
+          <span><svg class="ic"><use href="#i-star"/></svg> <span class="i18n" data-de="4,9 / 5 aus 3.400 Bewertungen" data-en="4.9 / 5 from 3,400 reviews">4,9 / 5 aus 3.400 Bewertungen</span></span>
+          <span><svg class="ic"><use href="#i-shield"/></svg> <span class="i18n" data-de="Lizenziert nach § 47 PBefG" data-en="Licensed under § 47 PBefG">Lizenziert nach § 47 PBefG</span></span>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="scene">
+          <div class="stars" id="stars"></div>
+          <svg class="sky-far" viewBox="0 0 560 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><g fill="#101724"><rect x="10" y="40" width="40" height="50"/><rect x="60" y="20" width="28" height="70"/><polygon points="120,90 120,30 138,10 156,30 156,90"/><rect x="180" y="34" width="22" height="56"/><polygon points="230,90 260,20 290,90"/><rect x="320" y="46" width="30" height="44"/><rect x="360" y="26" width="20" height="64"/><rect x="420" y="40" width="34" height="50"/><rect x="470" y="30" width="24" height="60"/><rect x="510" y="50" width="40" height="40"/></g></svg>
+          <svg class="sky-near" viewBox="0 0 560 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><g fill="#18202E"><rect x="0" y="24" width="60" height="36"/><rect x="70" y="12" width="40" height="48"/><polygon points="140,60 140,20 162,4 184,20 184,60"/><rect x="210" y="18" width="30" height="42"/><polygon points="260,60 295,8 330,60" fill="#1D2635"/><rect x="360" y="26" width="40" height="34"/><rect x="415" y="10" width="26" height="50"/><rect x="470" y="22" width="90" height="38"/></g></svg>
+          <div class="glow-h"></div>
+          <div class="streaks"><i></i><i></i><i></i></div>
+          <div class="road"><div class="lane"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <svg class="taxi" viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Modernes Taxi fährt blitzschnell durch Hamburg bei Nacht">
+            <ellipse cx="130" cy="112" rx="112" ry="7" fill="#000" opacity="0.42"/>
+            <path d="M232 68 L262 55 L262 85 L232 82 Z" fill="#F2B34B" opacity="0.28"/>
+            <path d="M40 82 C40 60 60 56 78 55 L96 40 C102 34 110 31 120 31 L176 31 C188 31 196 36 202 46 L214 62 C226 64 232 70 232 82 L232 88 C232 91 230 93 227 93 L44 93 C41 93 40 91 40 88 Z" fill="#F2B34B"/>
+            <path d="M40 82 C40 60 60 56 78 55 L96 40 C102 34 110 31 120 31 L120 55 L92 55 Z" fill="#F8CE7C" opacity="0.5"/>
+            <path d="M102 41 C106 37 111 35 118 35 L150 35 L150 55 L92 55 Z" fill="#0C1019" opacity="0.95"/>
+            <path d="M156 35 L174 35 C184 35 190 39 195 47 L202 55 L156 55 Z" fill="#0C1019" opacity="0.95"/>
+            <rect x="150" y="35" width="3" height="20" fill="#C8973A"/>
+            <rect x="108" y="17" width="44" height="14" rx="3" fill="#141B27"/>
+            <rect x="112" y="20" width="36" height="8" rx="2" fill="#F2B34B"/>
+            <text x="130" y="27" font-family="Space Mono,monospace" font-size="7" font-weight="700" fill="#191100" text-anchor="middle">TAXI</text>
+            <rect x="40" y="70" width="8" height="14" rx="2" fill="#F8CE7C"/>
+            <circle cx="228" cy="59" r="5.5" fill="#FFF3D6"/>
+            <rect x="222" y="80" width="10" height="7" rx="2" fill="#E24B4A"/>
+            <g class="wheel"><circle cx="72" cy="93" r="18" fill="#0A0E16"/><circle cx="72" cy="93" r="18" fill="none" stroke="#2A3547" stroke-width="2.5"/><circle cx="72" cy="93" r="6.5" fill="#1D2635"/><rect x="70" y="75" width="4" height="36" fill="#2A3547"/><rect x="54" y="91" width="36" height="4" fill="#2A3547"/></g>
+            <g class="wheel"><circle cx="196" cy="93" r="18" fill="#0A0E16"/><circle cx="196" cy="93" r="18" fill="none" stroke="#2A3547" stroke-width="2.5"/><circle cx="196" cy="93" r="6.5" fill="#1D2635"/><rect x="194" y="75" width="4" height="36" fill="#2A3547"/><rect x="178" y="91" width="36" height="4" fill="#2A3547"/></g>
+          </svg>
+        </div>
+        <div class="meter">
+          <div class="l i18n" data-de="Fahrpreis" data-en="Fare">Fahrpreis</div>
+          <div class="v" id="meter-val">18,40&nbsp;€</div>
+          <div class="s"><span class="dotlive"></span><span class="i18n" data-de="Festpreis garantiert" data-en="Fixed price guaranteed">Festpreis garantiert</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap booking-shell" id="buchen">
+      <div class="tabs">
+        <button class="tab active" data-tab="now"><svg class="ic"><use href="#i-bolt"/></svg> <span class="i18n" data-de="Sofort" data-en="Now">Sofort</span></button>
+        <button class="tab" data-tab="later"><svg class="ic"><use href="#i-calendar"/></svg> <span class="i18n" data-de="Vorbestellung" data-en="Schedule">Vorbestellung</span></button>
+      </div>
+      <div class="booking">
+        <div class="brow">
+          <div class="field has-pin">
+            <label class="i18n" data-de="Von" data-en="From">Von</label>
+            <svg class="ic pin"><use href="#i-pin"/></svg>
+            <input id="from" type="text" value="Jungfernstieg, Hamburg">
+            <div class="swap" id="swap"><svg class="ic"><use href="#i-swap"/></svg></div>
+          </div>
+          <div class="field has-pin">
+            <label class="i18n" data-de="Nach" data-en="To">Nach</label>
+            <svg class="ic pin"><use href="#i-flag"/></svg>
+            <input id="to" type="text" value="Flughafen Hamburg (HAM)">
+          </div>
+          <div class="field">
+            <label class="i18n" data-de="Fahrzeug" data-en="Vehicle">Fahrzeug</label>
+            <select id="cls">
+              <option value="std" class="i18n" data-de="Standard-Taxi (bis 4 Pers.)" data-en="Standard Taxi (up to 4 pax)">Standard-Taxi (bis 4 Pers.)</option>
+              <option value="van" class="i18n" data-de="Großraum-Taxi (ab 5 Pers.)" data-en="Large Capacity Taxi (5+ pax)">Großraum-Taxi (ab 5 Pers.)</option>
+            </select>
+          </div>
+          <div class="field when" id="when">
+            <label class="i18n" data-de="Datum &amp; Zeit" data-en="Date &amp; time">Datum &amp; Zeit</label>
+            <input type="datetime-local">
+          </div>
+          <div class="field">
+            <label class="i18n" data-de="Personen" data-en="Passengers">Personen</label>
+            <div class="counter"><button id="minus">−</button><span id="pax">2</span><button id="plus">+</button></div>
+          </div>
+          <button class="btn btn-gold" id="calc"><span class="i18n" data-de="Preis berechnen" data-en="Calculate price">Preis berechnen</span> <svg class="ic ar"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="fare">
+          <div class="txt"><svg class="ic"><use href="#i-euro"/></svg> <span class="i18n" data-de="Geschätzter Festpreis für diese Strecke" data-en="Estimated fixed price for this route">Geschätzter Festpreis für diese Strecke</span></div>
+          <div class="amt"><span id="fare-amt">38,00 € – 44,00 €</span> <small class="i18n" data-de="inkl. MwSt." data-en="incl. VAT">inkl. MwSt.</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="wrap">
+      <div class="stat"><div class="n" data-count="700">0</div><div class="t i18n" data-de="Fahrzeuge in Hamburg" data-en="Vehicles in Hamburg">Fahrzeuge in Hamburg</div></div>
+      <div class="stat"><div class="n" data-count="24">0</div><div class="t i18n" data-de="Stunden am Tag" data-en="Hours a day">Stunden am Tag</div></div>
+      <div class="stat"><div class="n" data-count="98" data-suffix="%">0</div><div class="t i18n" data-de="Pünktliche Abholung" data-en="On-time pickup">Pünktliche Abholung</div></div>
+      <div class="stat"><div class="n" data-count="1200000" data-fmt="mio">0</div><div class="t i18n" data-de="Fahrten pro Jahr" data-en="Rides per year">Fahrten pro Jahr</div></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow i18n" data-de="Ausstattung" data-en="Features">Ausstattung</div>
+        <h2 class="i18n" data-de="Alles, was eine gute Fahrt braucht" data-en="Everything a good ride needs">Alles, was eine gute Fahrt braucht</h2>
+      </div>
+      <div class="feat-grid reveal">
+        <div class="feat"><div class="ib"><svg class="ic"><use href="#i-euro"/></svg></div><h3 class="i18n" data-de="Festpreis-Garantie" data-en="Fixed-price guarantee">Festpreis-Garantie</h3><p class="i18n" data-de="Preis vor der Fahrt berechnet — unabhängig von Stau oder Umleitung." data-en="Price calculated before the ride — regardless of traffic or detours.">Preis vor der Fahrt berechnet — unabhängig von Stau oder Umleitung.</p></div>
+        <div class="feat"><div class="ib"><svg class="ic"><use href="#i-card"/></svg></div><h3 class="i18n" data-de="Online bezahlen" data-en="Pay online">Online bezahlen</h3><p class="i18n" data-de="Karte, PayPal, Apple Pay oder Google Pay direkt bei der Buchung." data-en="Card, PayPal, Apple Pay or Google Pay right at booking.">Karte, PayPal, Apple Pay oder Google Pay direkt bei der Buchung.</p></div>
+        <div class="feat"><div class="ib"><svg class="ic"><use href="#i-pin"/></svg></div><h3 class="i18n" data-de="Live-Tracking" data-en="Live tracking">Live-Tracking</h3><p class="i18n" data-de="Verfolgen Sie Ihr Taxi live und teilen Sie die Ankunftszeit." data-en="Track your taxi live and share the arrival time.">Verfolgen Sie Ihr Taxi live und teilen Sie die Ankunftszeit.</p></div>
+        <div class="feat"><div class="ib"><svg class="ic"><use href="#i-plane"/></svg></div><h3 class="i18n" data-de="Flughafen &amp; Bahnhof" data-en="Airport &amp; station">Flughafen &amp; Bahnhof</h3><p class="i18n" data-de="Flugverfolgung inklusive — der Fahrer wartet auch bei Verspätung." data-en="Flight tracking included — the driver waits even if you're delayed.">Flugverfolgung inklusive — der Fahrer wartet auch bei Verspätung.</p></div>
+        <div class="feat"><div class="ib"><svg class="ic"><use href="#i-globe"/></svg></div><h3 class="i18n" data-de="Zweisprachiger Service" data-en="Bilingual service">Zweisprachiger Service</h3><p class="i18n" data-de="Buchung, Rechnung und Support auf Deutsch und Englisch." data-en="Booking, receipt and support in German and English.">Buchung, Rechnung und Support auf Deutsch und Englisch.</p></div>
+        <div class="feat"><div class="ib"><svg class="ic"><use href="#i-calendar"/></svg></div><h3 class="i18n" data-de="Vorbestellung" data-en="Advance booking">Vorbestellung</h3><p class="i18n" data-de="Bis zu 30 Tage im Voraus — für Termine, Hochzeiten und Firmenfahrten." data-en="Up to 30 days ahead — for appointments, weddings and business travel.">Bis zu 30 Tage im Voraus — für Termine, Hochzeiten und Firmenfahrten.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="flotte" style="padding-top:0;">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow i18n" data-de="Unsere Flotte" data-en="Our fleet">Unsere Flotte</div>
+        <h2 class="i18n" data-de="Moderne, gepflegte Fahrzeuge" data-en="Modern, well-kept vehicles">Moderne, gepflegte Fahrzeuge</h2>
+        <p class="i18n" data-de="Tipp: Ersetzen Sie die Platzhalter durch echte Fotos Ihrer Fahrzeuge." data-en="Tip: replace the placeholders with real photos of your vehicles.">Tipp: Ersetzen Sie die Platzhalter durch echte Fotos Ihrer Fahrzeuge.</p>
+      </div>
+      <div class="showcase reveal">
+        <div class="pcard"><div class="pslot"><span class="tag">NIO ET7 · Standard</span><div class="glow-h" style="z-index: 1;"></div>
+          <img src="img/et7_front.jpg" alt="NIO ET7 Front" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85;">
+        </div><div class="body"><h3 class="i18n" data-de="Standard" data-en="Standard">Standard</h3><p class="i18n" data-de="Bis 4 Personen, 2 Koffer. Ideal für den Alltag in der Stadt." data-en="Up to 4 people, 2 suitcases. Ideal for everyday city rides.">Bis 4 Personen, 2 Koffer. Ideal für den Alltag in der Stadt.</p></div></div>
+        
+        <div class="pcard"><div class="pslot"><span class="tag">NIO ET7 · Van</span><div class="glow-h" style="z-index: 1;"></div>
+          <img src="img/et7_side.jpg" alt="NIO ET7 Side" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85;">
+        </div><div class="body"><h3 class="i18n" data-de="Kombi / Van" data-en="Estate / Van">Kombi / Van</h3><p class="i18n" data-de="Bis 6 Personen, 5 Koffer. Perfekt für Gruppen und Flughafenfahrten." data-en="Up to 6 people, 5 suitcases. Perfect for groups and airport transfers.">Bis 6 Personen, 5 Koffer. Perfekt für Gruppen und Flughafenfahrten.</p></div></div>
+        
+        <div class="pcard"><div class="pslot"><span class="tag">NIO ET7 · Business</span><div class="glow-h" style="z-index: 1;"></div>
+          <img src="img/et7_rear.jpg" alt="NIO ET7 Rear" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85;">
+        </div><div class="body"><h3 class="i18n" data-de="Business" data-en="Business">Business</h3><p class="i18n" data-de="Gehobene Fahrzeuge, Namensschild-Abholung, erfahrene Fahrer." data-en="Premium vehicles, name-board pickup, experienced drivers.">Gehobene Fahrzeuge, Namensschild-Abholung, erfahrene Fahrer.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="preise" style="background:var(--bg-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow i18n" data-de="Preise" data-en="Pricing">Preise</div>
+        <h2 class="i18n" data-de="Transparente Festpreise" data-en="Transparent fixed prices">Transparente Festpreise</h2>
+      </div>
+      <div class="fleet reveal">
+        <div class="fc">
+          <h3 class="i18n" data-de="Standard-Taxi" data-en="Standard Taxi">Standard-Taxi</h3>
+          <div class="cap i18n" data-de="Bis 4 Personen nach Taxameter" data-en="Up to 4 passengers by taximeter">Bis 4 Personen nach Taxameter</div>
+          <div class="price">4,50&nbsp;€ <span class="i18n" data-de="Grundpreis" data-en="base fare">Grundpreis</span></div>
+          <ul><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="2,70 €/km (bis 9 km), ab 9 km 2,00 €/km" data-en="€2.70/km (up to 9 km), then €2.00/km">2,70 €/km (bis 9 km), ab 9 km 2,00 €/km</span></li><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Wartezeit: 38,00 € / Stunde" data-en="Waiting time: €38.00 / hour">Wartezeit: 38,00 € / Stunde</span></li><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Offizieller Hamburger Tarif 2025" data-en="Official Hamburg Tariff 2025">Offizieller Hamburger Tarif 2025</span></li></ul>
+        </div>
+        <div class="fc feat-card">
+          <div class="fbadge i18n" data-de="Gruppen" data-en="Groups">Gruppen</div>
+          <h3 class="i18n" data-de="Großraum-Taxi" data-en="Large capacity taxi">Großraum-Taxi</h3>
+          <div class="cap i18n" data-de="Ab 5 Personen · Viel Gepäck" data-en="5+ passengers · Lots of luggage">Ab 5 Personen · Viel Gepäck</div>
+          <div class="price">12,50&nbsp;€ <span class="i18n" data-de="Startpreis" data-en="start fare">Startpreis</span></div>
+          <ul><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Inkl. 8,00 € Großraumzuschlag" data-en="Incl. €8.00 large vehicle surcharge">Inkl. 8,00 € Großraumzuschlag</span></li><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Gleiche Kilometerpreise wie Standard" data-en="Same km rates as standard">Gleiche Kilometerpreise wie Standard</span></li><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Ideal für Flughafen &amp; Gruppen" data-en="Ideal for airport &amp; groups">Ideal für Flughafen &amp; Gruppen</span></li></ul>
+        </div>
+        <div class="fc">
+          <h3 class="i18n" data-de="Festpreis per App" data-en="Fixed price via app">Festpreis per App</h3>
+          <div class="cap i18n" data-de="Vorab buchen · Sicherer Preis" data-en="Book ahead · Secure price">Vorab buchen · Sicherer Preis</div>
+          <div class="price" style="font-size: 26px;"><span class="i18n" data-de="Preiskorridor" data-en="Price corridor">Preiskorridor</span></div>
+          <ul><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Festpreis vor Fahrtantritt garantiert" data-en="Fixed price guaranteed before ride">Festpreis vor Fahrtantritt garantiert</span></li><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Abweichung bis zu ±20% möglich" data-en="Deviation of up to ±20% possible">Abweichung bis zu ±20% möglich</span></li><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Gemäß Tarifverordnung ab Okt 2025" data-en="Per tariff regulation from Oct 2025">Gemäß Tarifverordnung ab Okt 2025</span></li></ul>
+        </div>
+      </div>
+      <div class="pays reveal">
+        <span class="lbl i18n" data-de="Zahlung" data-en="Payment">Zahlung</span>
+        <div class="chip">Visa</div><div class="chip">Mastercard</div><div class="chip">Amex</div><div class="chip">PayPal</div><div class="chip">Apple Pay</div><div class="chip">Google Pay</div><div class="chip i18n" data-de="Rechnung" data-en="Invoice">Rechnung</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gebiet">
+    <div class="wrap cov">
+      <div class="reveal">
+        <div class="eyebrow i18n" data-de="Servicegebiet" data-en="Coverage area">Servicegebiet</div>
+        <h2 style="font-size:36px;margin:16px 0 18px;" class="i18n" data-de="Ganz Hamburg &amp; Umland" data-en="All of Hamburg &amp; surroundings">Ganz Hamburg &amp; Umland</h2>
+        <p style="color:var(--text-2);font-size:15.5px;max-width:440px;" class="i18n" data-de="Von der HafenCity bis nach Blankenese, vom Flughafen bis zum Hauptbahnhof — wir sind in jedem Stadtteil in wenigen Minuten bei Ihnen." data-en="From HafenCity to Blankenese, from the airport to the main station — we reach you in every district within minutes.">Von der HafenCity bis nach Blankenese, vom Flughafen bis zum Hauptbahnhof — wir sind in jedem Stadtteil in wenigen Minuten bei Ihnen.</p>
+        <div class="cov-list">
+          <div><svg class="ic"><use href="#i-pin"/></svg> HafenCity</div>
+          <div><svg class="ic"><use href="#i-pin"/></svg> Altona</div>
+          <div><svg class="ic"><use href="#i-pin"/></svg> St. Pauli</div>
+          <div><svg class="ic"><use href="#i-pin"/></svg> Eppendorf</div>
+          <div><svg class="ic"><use href="#i-pin"/></svg> Blankenese</div>
+          <div><svg class="ic"><use href="#i-plane"/></svg> <span class="i18n" data-de="Flughafen HAM" data-en="Airport HAM">Flughafen HAM</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="cov-map">
+          <svg viewBox="0 0 480 380" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Karte des Servicegebiets in Hamburg">
+            <path d="M60 230 Q120 200 180 215 Q240 190 300 210 Q360 200 420 225" fill="none" stroke="#37D2E6" stroke-width="2" opacity="0.5"/>
+            <path d="M60 230 Q120 200 180 215 Q240 190 300 210 Q360 200 420 225 L420 260 Q360 240 300 250 Q240 235 180 255 Q120 245 60 265 Z" fill="#37D2E6" opacity="0.06"/>
+            <circle cx="240" cy="205" r="90" fill="none" stroke="#F2B34B" stroke-width="1.5" stroke-dasharray="4 8" opacity="0.4"/>
+            <circle cx="240" cy="205" r="150" fill="none" stroke="#F2B34B" stroke-width="1" stroke-dasharray="3 10" opacity="0.22"/>
+            <g font-family="Space Mono,monospace" font-size="10" fill="#AAB2BF">
+              <circle cx="240" cy="205" r="5" fill="#F2B34B"/><text x="252" y="209">Zentrum</text>
+              <circle cx="150" cy="175" r="3.5" fill="#37D2E6"/><text x="120" y="165">Altona</text>
+              <circle cx="330" cy="160" r="3.5" fill="#37D2E6"/><text x="342" y="158">Wandsbek</text>
+              <circle cx="300" cy="120" r="3.5" fill="#37D2E6"/><text x="270" y="110">HAM ✈</text>
+              <circle cx="200" cy="270" r="3.5" fill="#37D2E6"/><text x="150" y="288">Blankenese</text>
+              <circle cx="300" cy="270" r="3.5" fill="#37D2E6"/><text x="312" y="285">Harburg</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tracking" style="background:var(--bg-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap track">
+      <div class="reveal">
+        <div class="eyebrow i18n" data-de="Live-Tracking" data-en="Live tracking">Live-Tracking</div>
+        <h2 style="font-size:36px;margin:16px 0 24px;" class="i18n" data-de="Immer sehen, wo Ihr Taxi ist" data-en="Always see where your taxi is">Immer sehen, wo Ihr Taxi ist</h2>
+        <ul class="tlist">
+          <li><div class="k"><svg class="ic"><use href="#i-pin"/></svg></div><div><h4 class="i18n" data-de="Fahrer in Echtzeit" data-en="Driver in real time">Fahrer in Echtzeit</h4><p class="i18n" data-de="Position, Fahrzeug und Kennzeichen auf einen Blick." data-en="Position, vehicle and license plate at a glance.">Position, Fahrzeug und Kennzeichen auf einen Blick.</p></div></li>
+          <li><div class="k"><svg class="ic"><use href="#i-clock"/></svg></div><div><h4 class="i18n" data-de="Genaue Ankunftszeit" data-en="Accurate arrival time">Genaue Ankunftszeit</h4><p class="i18n" data-de="Sekundengenaue ETA — kein Warten im Ungewissen." data-en="ETA to the second — no waiting in the dark.">Sekundengenaue ETA — kein Warten im Ungewissen.</p></div></li>
+          <li><div class="k"><svg class="ic"><use href="#i-share"/></svg></div><div><h4 class="i18n" data-de="Fahrt teilen" data-en="Share your ride">Fahrt teilen</h4><p class="i18n" data-de="Senden Sie Ihren Live-Standort an Freunde und Familie." data-en="Send your live location to friends and family.">Senden Sie Ihren Live-Standort an Freunde und Familie.</p></div></li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen">
+            <div class="mapbg"></div>
+            <svg class="rp" viewBox="0 0 184 228" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 205 C 40 155, 124 165, 104 105 S 62 42, 154 22" fill="none" stroke="#37D2E6" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 9"/>
+              <circle cx="20" cy="205" r="6" fill="#37D2E6"/>
+              <circle cx="154" cy="22" r="6" fill="#F2B34B"/>
+              <g class="move" style="offset-path:path('M20 205 C 40 155, 124 165, 104 105 S 62 42, 154 22');">
+                <circle r="9" fill="#F2B34B"/><circle r="9" fill="none" stroke="#F2B34B" stroke-width="1.5"><animate attributeName="r" from="9" to="19" dur="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" from="0.5" to="0" dur="1.5s" repeatCount="indefinite"/></circle>
+              </g>
+            </svg>
+            <div class="ti">
+              <div class="drv"><div class="av">MK</div><div><b>Mehmet K.</b><small>HH-BT 2140 · Mercedes E-Klasse</small></div></div>
+              <div class="eta"><span class="i18n" data-de="Ankunft in" data-en="Arrives in">Ankunft in</span><b>3 min</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ablauf">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow i18n" data-de="So funktioniert's" data-en="How it works">So funktioniert's</div>
+        <h2 class="i18n" data-de="Drei Schritte bis zur Ankunft" data-en="Three steps to arrival">Drei Schritte bis zur Ankunft</h2>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><div class="idx">01</div><h3 class="i18n" data-de="Strecke eingeben" data-en="Enter your route">Strecke eingeben</h3><p class="i18n" data-de="Start, Ziel, Zeit und Klasse wählen — der Festpreis erscheint sofort." data-en="Choose start, destination, time and class — the fixed price appears instantly.">Start, Ziel, Zeit und Klasse wählen — der Festpreis erscheint sofort.</p></div>
+        <div class="step"><div class="idx">02</div><h3 class="i18n" data-de="Online bezahlen" data-en="Pay online">Online bezahlen</h3><p class="i18n" data-de="Sicher per Karte, PayPal, Apple Pay oder Google Pay abschließen." data-en="Complete securely by card, PayPal, Apple Pay or Google Pay.">Sicher per Karte, PayPal, Apple Pay oder Google Pay abschließen.</p></div>
+        <div class="step"><div class="idx">03</div><h3 class="i18n" data-de="Fahrt verfolgen" data-en="Track your ride">Fahrt verfolgen</h3><p class="i18n" data-de="Fahrer und Ankunft live verfolgen, Beleg automatisch per E-Mail." data-en="Track driver and arrival live, receipt automatically by email.">Fahrer und Ankunft live verfolgen, Beleg automatisch per E-Mail.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="firmen" style="padding-top:0;">
+    <div class="wrap">
+      <div class="biz reveal">
+        <div style="position:relative;z-index:2;">
+          <div class="eyebrow i18n" data-de="Für Firmenkunden" data-en="For business clients">Für Firmenkunden</div>
+          <h2 style="margin-top:16px;" class="i18n" data-de="Geschäftsfahrten, zentral abgerechnet" data-en="Business rides, billed centrally">Geschäftsfahrten, zentral abgerechnet</h2>
+          <p class="i18n" data-de="Ein Firmenkonto für Ihr ganzes Team: monatliche Sammelrechnung, Kostenstellen und feste Ansprechpartner — ohne Bargeld, ohne Belegchaos." data-en="One business account for your whole team: monthly consolidated invoice, cost centers and dedicated contacts — no cash, no receipt chaos.">Ein Firmenkonto für Ihr ganzes Team: monatliche Sammelrechnung, Kostenstellen und feste Ansprechpartner — ohne Bargeld, ohne Belegchaos.</p>
+          <a href="#kontakt" class="btn btn-volt i18n" data-de="Firmenkonto anfragen" data-en="Request a business account">Firmenkonto anfragen <svg class="ic ar"><use href="#i-arrow"/></svg></a>
+        </div>
+        <ul class="biz-list">
+          <li><div class="k"><svg class="ic"><use href="#i-file"/></svg></div><div><b class="i18n" data-de="Monatliche Sammelrechnung" data-en="Monthly consolidated invoice">Monatliche Sammelrechnung</b><span class="i18n" data-de="Eine Rechnung statt vieler Belege." data-en="One invoice instead of many receipts.">Eine Rechnung statt vieler Belege.</span></div></li>
+          <li><div class="k"><svg class="ic"><use href="#i-users"/></svg></div><div><b class="i18n" data-de="Team-Verwaltung" data-en="Team management">Team-Verwaltung</b><span class="i18n" data-de="Mitarbeitende und Budgets zentral steuern." data-en="Manage employees and budgets centrally.">Mitarbeitende und Budgets zentral steuern.</span></div></li>
+          <li><div class="k"><svg class="ic"><use href="#i-shield"/></svg></div><div><b class="i18n" data-de="Fester Ansprechpartner" data-en="Dedicated contact">Fester Ansprechpartner</b><span class="i18n" data-de="Persönlicher Service rund um die Uhr." data-en="Personal service around the clock.">Persönlicher Service rund um die Uhr.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" style="background:var(--bg-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow i18n" data-de="Bewertungen" data-en="Reviews">Bewertungen</div>
+        <h2 class="i18n" data-de="Was Fahrgäste sagen" data-en="What passengers say">Was Fahrgäste sagen</h2>
+      </div>
+      <div class="revs reveal">
+        <div class="rev"><div class="st">★★★★★</div><p class="i18n" data-de="„Pünktlich am Flughafen abgeholt, fester Preis, sehr freundlicher Fahrer. Genau so soll ein Taxi sein.“" data-en="&quot;Picked up on time at the airport, fixed price, very friendly driver. Exactly how a taxi should be.&quot;">„Pünktlich am Flughafen abgeholt, fester Preis, sehr freundlicher Fahrer. Genau so soll ein Taxi sein.“</p><div class="who"><div class="av">LK</div><div><b>Lena K.</b><small class="i18n" data-de="Hamburg-Eppendorf" data-en="Hamburg-Eppendorf">Hamburg-Eppendorf</small></div></div></div>
+        <div class="rev"><div class="st">★★★★★</div><p class="i18n" data-de="„Booking in English was effortless. Paid with Apple Pay, tracked the car the whole way. Highly recommend.“" data-en="&quot;Booking in English was effortless. Paid with Apple Pay, tracked the car the whole way. Highly recommend.&quot;">„Booking in English was effortless. Paid with Apple Pay, tracked the car the whole way. Highly recommend.“</p><div class="who"><div class="av">JM</div><div><b>James M.</b><small class="i18n" data-de="Gast aus London" data-en="Visitor from London">Gast aus London</small></div></div></div>
+        <div class="rev"><div class="st">★★★★★</div><p class="i18n" data-de="„Nutzen wir regelmäßig für Firmenfahrten. Zuverlässig, saubere Fahrzeuge, monatliche Rechnung.“" data-en="&quot;We use it regularly for business trips. Reliable, clean vehicles, monthly invoice.&quot;">„Nutzen wir regelmäßig für Firmenfahrten. Zuverlässig, saubere Fahrzeuge, monatliche Rechnung.“</p><div class="who"><div class="av">SB</div><div><b>Stefan B.</b><small class="i18n" data-de="Firmenkunde, HafenCity" data-en="Business client, HafenCity">Firmenkunde, HafenCity</small></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="app">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow i18n" data-de="Mobile App" data-en="Mobile app">Mobile App</div>
+        <h2 style="margin-top:16px;" class="i18n" data-de="Die App für unterwegs" data-en="The app for on the go">Die App für unterwegs</h2>
+        <p class="i18n" data-de="Buchen, bezahlen und Ihr Taxi live verfolgen — alles in einer App. Speichern Sie Lieblingsadressen und Zahlungsmittel für die schnellste Buchung Hamburgs." data-en="Book, pay and track your taxi live — all in one app. Save favorite addresses and payment methods for the fastest booking in Hamburg.">Buchen, bezahlen und Ihr Taxi live verfolgen — alles in einer App. Speichern Sie Lieblingsadressen und Zahlungsmittel für die schnellste Buchung Hamburgs.</p>
+        <div class="stores">
+          <a href="#" class="store"><svg class="ic"><use href="#i-apple"/></svg><span><small class="i18n" data-de="Laden im" data-en="Download on the">Laden im</small><b>App Store</b></span></a>
+          <a href="#" class="store"><svg class="ic"><use href="#i-play"/></svg><span><small class="i18n" data-de="Jetzt bei" data-en="Get it on">Jetzt bei</small><b>Google Play</b></span></a>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center;">
+        <div class="phone" style="height:430px;width:214px;">
+          <div class="notch" style="width:94px;"></div>
+          <div class="screen" style="background:radial-gradient(120% 80% at 50% 20%,#141C2B,#0A0E16);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:26px;">
+            <div style="width:58px;height:58px;border-radius:17px;background:var(--amber);display:flex;align-items:center;justify-content:center;box-shadow:0 0 24px rgba(242,179,75,0.4);"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M13 2 L4 14 L11 14 L10 22 L20 9 L13 9 Z" fill="#191100"/></svg></div>
+            <div style="font-family:var(--sora);font-weight:800;font-size:20px;">BLITZ TAXI</div>
+            <div style="font-family:var(--mono);font-size:10.5px;color:var(--text-3);letter-spacing:.14em;">YILDIRIM · HAMBURG</div>
+            <div style="margin-top:8px;width:100%;background:var(--amber);color:#191100;text-align:center;padding:13px;border-radius:11px;font-weight:600;font-size:14px;" class="i18n" data-de="Taxi bestellen" data-en="Order a taxi">Taxi bestellen</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow i18n" data-de="Häufige Fragen" data-en="FAQ">Häufige Fragen</div>
+        <h2 class="i18n" data-de="Gut zu wissen" data-en="Good to know">Gut zu wissen</h2>
+      </div>
+      <div class="reveal">
+        <div class="fitem"><button class="fq"><span class="i18n" data-de="Ist der angezeigte Preis wirklich fest?" data-en="Is the shown price really fixed?">Ist der angezeigte Preis wirklich fest?</span><svg class="ic pl"><use href="#i-plus"/></svg></button><div class="fa"><div class="in i18n" data-de="Ja. Gemäß der neuen Hamburger Preiskorridor-Regelung wird der Festpreis bei App-Buchungen vorab berechnet und ändert sich nicht durch Stau, Umleitungen oder Wartezeit. Sie zahlen genau den bestätigten Betrag." data-en="Yes. According to the new Hamburg price corridor regulation, the fixed price for app bookings is calculated in advance and does not change due to traffic jams, detours or waiting times.">Ja. Gemäß der neuen Hamburger Preiskorridor-Regelung wird der Festpreis bei App-Buchungen vorab berechnet und ändert sich nicht durch Stau, Umleitungen oder Wartezeit. Sie zahlen genau den bestätigten Betrag.</div></div></div>
+        <div class="fitem"><button class="fq"><span class="i18n" data-de="Muss ich Bargeld dabeihaben oder kann ich immer mit Karte zahlen?" data-en="Do I need to carry cash or can I always pay by card?">Muss ich Bargeld dabeihaben oder kann ich immer mit Karte zahlen?</span><svg class="ic pl"><use href="#i-plus"/></svg></button><div class="fa"><div class="in i18n" data-de="Sie benötigen kein Bargeld. Gemäß der Hamburger Taxenordnung sind alle Taxis zur Annahme von bargeldlosen Zahlungen verpflichtet. Wir akzeptieren EC-Karten, Kreditkarten (Visa/Mastercard), Apple Pay und Google Pay für jede noch so kurze Fahrt." data-en="You do not need cash. According to the Hamburg Taxi Ordinance, all taxis are obliged to accept cashless payments. We accept cards, Apple Pay and Google Pay for every trip, no matter how short.">Sie benötigen kein Bargeld. Gemäß der Hamburger Taxenordnung sind alle Taxis zur Annahme von bargeldlosen Zahlungen verpflichtet. Wir akzeptieren EC-Karten, Kreditkarten (Visa/Mastercard), Apple Pay und Google Pay für jede noch so kurze Fahrt.</div></div></div>
+        <div class="fitem"><button class="fq"><span class="i18n" data-de="Gibt es eine Mindeststrecke für Taxifahrten?" data-en="Is there a minimum distance for taxi rides?">Gibt es eine Mindeststrecke für Taxifahrten?</span><svg class="ic pl"><use href="#i-plus"/></svg></button><div class="fa"><div class="in i18n" data-de="Nein. In Hamburg gilt die gesetzliche Beförderungspflicht (§ 22 PBefG). Innerhalb des Pflichtfahrgebietes darf und wird keine Fahrt wegen einer zu kurzen Distanz abgelehnt. Wir bringen Sie jederzeit sicher ans Ziel." data-en="No. The legal obligation to transport applies in Hamburg (§ 22 PBefG). Within the compulsory driving area, no trip may be refused due to a distance being too short.">Nein. In Hamburg gilt die gesetzliche Beförderungspflicht (§ 22 PBefG). Innerhalb des Pflichtfahrgebietes darf und wird keine Fahrt wegen einer zu kurzen Distanz abgelehnt. Wir bringen Sie jederzeit sicher ans Ziel.</div></div></div>
+        <div class="fitem"><button class="fq"><span class="i18n" data-de="Haben die Taxis Kindersitze an Bord?" data-en="Do the taxis have child seats on board?">Haben die Taxis Kindersitze an Bord?</span><svg class="ic pl"><use href="#i-plus"/></svg></button><div class="fa"><div class="in i18n" data-de="Ja. Laut Hamburger Taxenordnung führen unsere Fahrzeuge standardmäßig zugelassene Sitzerhöhungen für Kinder ab 15 kg (Gruppen II/III) mit. Benötigen Sie eine Babyschale (Gruppe 0) oder einen Kleinkindersitz (Gruppe I), geben Sie dies bitte einfach bei der Vorbestellung an." data-en="Yes. According to Hamburg taxi regulations, our vehicles carry approved booster seats for children from 15 kg (Groups II/III) as standard. If you need a baby or toddler seat, please specify this when pre-ordering.">Ja. Laut Hamburger Taxenordnung führen unsere Fahrzeuge standardmäßig zugelassene Sitzerhöhungen für Kinder ab 15 kg (Gruppen II/III) mit. Benötigen Sie eine Babyschale (Gruppe 0) oder einen Kleinkindersitz (Gruppe I), geben Sie dies bitte einfach bei der Vorbestellung an.</div></div></div>
+        <div class="fitem"><button class="fq"><span class="i18n" data-de="Darf ich meinen Hund im Taxi mitnehmen?" data-en="Can I take my dog in the taxi?">Darf ich meinen Hund im Taxi mitnehmen?</span><svg class="ic pl"><use href="#i-plus"/></svg></button><div class="fa"><div class="in i18n" data-de="Blinden- und Assistenzhunde werden laut Gesetz grundsätzlich und kostenlos befördert. Auch andere Haustiere nehmen wir gerne mit, sofern die Sicherheit im Fahrzeug gewährleistet ist. Bitte wählen Sie bei großen Hunden bei der Buchung den Fahrzeugtyp Kombi/Van aus." data-en="Guide and assistance dogs are always transported free of charge by law. We also gladly take other pets as long as safety in the vehicle is ensured. For large dogs, please select the estate/van vehicle type when booking.">Blinden- und Assistenzhunde werden laut Gesetz grundsätzlich und kostenlos befördert. Auch andere Haustiere nehmen wir gerne mit, sofern die Sicherheit im Fahrzeug gewährleistet ist. Bitte wählen Sie bei großen Hunden bei der Buchung den Fahrzeugtyp Kombi/Van aus.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <div class="wrap">
+      <div>
+        <h2 class="i18n" data-de="Bereit für die nächste Fahrt?" data-en="Ready for your next ride?">Bereit für die nächste Fahrt?</h2>
+        <p class="i18n" data-de="In 60 Sekunden gebucht — Festpreis, bargeldlos, blitzschnell." data-en="Booked in 60 seconds — fixed price, cashless, lightning-fast.">In 60 Sekunden gebucht — Festpreis, bargeldlos, blitzschnell.</p>
+      </div>
+      <a href="#buchen" class="btn btn-volt i18n" data-de="Jetzt Taxi bestellen" data-en="Order a taxi now">Jetzt Taxi bestellen <svg class="ic ar"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="kontakt">
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fcol">
+        <div class="fbrand"><span class="bolt"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M13 2 L4 14 L11 14 L10 22 L20 9 L13 9 Z" fill="#F2B34B"/></svg></span> BLITZ TAXI</div>
+        <p class="i18n" data-de="Ihr Festpreis-Taxi für Hamburg und Umgebung. 24 Stunden am Tag, 7 Tage die Woche." data-en="Your fixed-price taxi for Hamburg and surroundings. 24 hours a day, 7 days a week.">Ihr Festpreis-Taxi für Hamburg und Umgebung. 24 Stunden am Tag, 7 Tage die Woche.</p>
+      </div>
+      <div class="fcol"><h4 class="i18n" data-de="Kontakt" data-en="Contact">Kontakt</h4><a href="tel:+4940555055">+49 40 555 0 555</a><a href="mailto:info@blitztaxi-yildirim.de">info@blitztaxi-yildirim.de</a><p class="i18n" data-de="Speicherstadt 12, 20457 Hamburg" data-en="Speicherstadt 12, 20457 Hamburg">Speicherstadt 12, 20457 Hamburg</p></div>
+      <div class="fcol"><h4 class="i18n" data-de="Unternehmen" data-en="Company">Unternehmen</h4><a href="#flotte" class="i18n" data-de="Flotte" data-en="Fleet">Flotte</a><a href="#firmen" class="i18n" data-de="Für Firmenkunden" data-en="For business">Für Firmenkunden</a><a href="fahrer.html" class="i18n" data-de="Fahrer:in werden" data-en="Become a driver">Fahrer:in werden</a></div>
+      <div class="fcol"><h4 class="i18n" data-de="Rechtliches" data-en="Legal">Rechtliches</h4><a href="impressum.html" class="i18n" data-de="Impressum" data-en="Legal notice">Impressum</a><a href="datenschutz.html" class="i18n" data-de="Datenschutz" data-en="Privacy">Datenschutz</a><a href="agb.html" class="i18n" data-de="AGB" data-en="Terms">AGB</a></div>
+    </div>
+    <div class="fbot">
+      <div>© 2026 Blitz Taxi Yildirim</div>
+      <div class="i18n" data-de="Konzessioniert nach § 47 PBefG" data-en="Licensed under § 47 PBefG">Konzessioniert nach § 47 PBefG</div>
+    </div>
+  </div>
+</footer>
+
+<div class="mcta">
+  <div class="p"><b id="mfare">ab 38,00 €</b><small class="i18n" data-de="Festpreis · HafenCity → HAM" data-en="Fixed price · HafenCity → HAM">Festpreis · HafenCity → HAM</small></div>
+  <a href="#buchen" class="btn btn-gold i18n" data-de="Buchen" data-en="Book">Buchen</a>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="i-arrow"><path d="M5 12h14M13 6l6 6-6 6"/></g>
+    <g id="i-euro"><path d="M18 7a7 7 0 1 0 0 10M4 10h9M4 14h9"/></g>
+    <g id="i-card"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></g>
+    <g id="i-pin"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></g>
+    <g id="i-flag"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></g>
+    <g id="i-plane"><path d="M10 3 4 14l3 1 2 6 3-6 6-2-4-3 1-6-5 3Z" transform="rotate(0 12 12)"/></g>
+    <g id="i-globe"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></g>
+    <g id="i-calendar"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9h16M8 3v4M16 3v4"/></g>
+    <g id="i-clock"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g>
+    <g id="i-phone"><path d="M6 3h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2Z"/></g>
+    <g id="i-check"><path d="M4 12l5 5L20 6"/></g>
+    <g id="i-plus"><path d="M12 5v14M5 12h14"/></g>
+    <g id="i-star"><path d="m12 3 2.6 5.6L21 9.3l-4.5 4.2 1.1 6.1L12 16.9 6.4 19.6l1.1-6.1L3 9.3l6.4-.7L12 3Z"/></g>
+    <g id="i-shield"><path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6l8-3Z"/><path d="M9 12l2 2 4-4"/></g>
+    <g id="i-bolt"><path d="M13 3 5 13h6l-1 8 8-11h-6l1-7Z"/></g>
+    <g id="i-swap"><path d="M7 4v16M7 4 4 7M7 4l3 3M17 20V4M17 20l3-3M17 20l-3-3"/></g>
+    <g id="i-share"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8 15.8 7.2M8.2 13.2l7.6 3.6"/></g>
+    <g id="i-file"><path d="M6 3h8l4 4v14H6V3Z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></g>
+    <g id="i-users"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0M16 5.5a3 3 0 0 1 0 5.6M21 20a6 6 0 0 0-4-5.6"/></g>
+    <g id="i-apple"><path d="M16 13c0 3 2 4 2 4s-1.4 3-3 3c-1 0-1.5-.6-2.6-.6S11 20 10 20c-1.7 0-3-3-3-5.5C7 11 9 10 10.5 10c1 0 1.7.6 2.5.6S14.5 10 16 10c-.3.6-.5 1.6 0 3Z" fill="currentColor" stroke="none"/><path d="M13 7c.8-1 1-2 1-3" fill="none"/></g>
+    <g id="i-play"><path d="M5 3.5 19 12 5 20.5V3.5Z"/></g>
+  </defs>
+</svg>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
