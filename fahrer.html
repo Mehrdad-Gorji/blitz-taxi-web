@@ -62,6 +62,206 @@
   @media(max-width: 500px) {
     .d-grid { grid-template-columns: 1fr; }
   }
+
+  /* Availability toggle */
+  .avail-toggle { display:flex; align-items:center; gap:8px; padding:8px 14px; border-radius:20px; border:1px solid rgba(76,175,80,.3); background:rgba(76,175,80,.08); cursor:pointer; font-size:.85rem; font-weight:600; color:#4CAF50; transition:.2s; font-family:'Inter',sans-serif; }
+  .avail-toggle:hover { border-color:#4CAF50; }
+  .avail-toggle .dot { width:8px; height:8px; border-radius:50%; background:#4CAF50; box-shadow:0 0 0 0 rgba(76,175,80,.5); animation:availPulse 2s infinite; }
+  .avail-toggle.off { border-color:#2A3547; background:rgba(160,178,198,.06); color:#A0B2C6; }
+  .avail-toggle.off .dot { background:#69717F; animation:none; box-shadow:none; }
+  @keyframes availPulse { 0%{box-shadow:0 0 0 0 rgba(76,175,80,.45);} 70%{box-shadow:0 0 0 8px rgba(76,175,80,0);} 100%{box-shadow:0 0 0 0 rgba(76,175,80,0);} }
+
+  /* Weekly earnings chart */
+  .chart-wrap { display:flex; align-items:flex-end; gap:14px; padding-top:10px; }
+  .chart-bar { flex:1; display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .chart-bar .bv { font-family:'Space Mono',monospace; font-size:.72rem; color:#A0B2C6; }
+  .chart-bar.today .bv { color:#F2B34B; font-weight:700; }
+  .bar-track { width:100%; height:140px; display:flex; align-items:flex-end; }
+  .bar-track .bar { width:100%; max-width:34px; margin:0 auto; height:var(--h); background:linear-gradient(180deg,#F2B34B,#7C6030); border-radius:6px 6px 3px 3px; transition:height .8s cubic-bezier(.2,.6,.2,1); }
+  .chart-bar.today .bar { background:linear-gradient(180deg,#F8CE7C,#F2B34B); box-shadow:0 0 16px rgba(242,179,75,.35); }
+  .chart-bar.future .bar { background:#1D2635; }
+  .chart-bar .bd { font-size:.78rem; color:#69717F; }
+  .chart-bar.today .bd { color:#fff; font-weight:600; }
+
+  /* Upcoming shifts */
+  .shift-list { display:flex; flex-direction:column; gap:14px; margin-top:20px; }
+  .shift-item { display:flex; align-items:center; gap:16px; padding:14px 16px; background:#080B12; border:1px solid #1D2635; border-radius:10px; }
+  .shift-item .sd { width:64px; flex:0 0 auto; font-family:'Space Mono',monospace; font-size:.78rem; color:#A0B2C6; text-align:center; }
+  .shift-item .sd.today { color:#F2B34B; font-weight:700; }
+  .shift-item .si { display:flex; flex-direction:column; gap:2px; }
+  .shift-item .si b { font-size:.92rem; }
+  .shift-item .si span { font-size:.78rem; color:#69717F; }
+
+  /* Dashboard tabs */
+  .d-tabs { display:inline-flex; gap:4px; background:#080B12; border:1px solid #1D2635; border-radius:10px; padding:4px; margin-bottom:20px; }
+  .d-tab { display:flex; align-items:center; gap:8px; background:transparent; border:none; color:#A0B2C6; font-family:'Inter',sans-serif; font-weight:600; font-size:.85rem; padding:9px 16px; border-radius:7px; cursor:pointer; transition:.2s; }
+  .d-tab:hover { color:#fff; }
+  .d-tab.active { background:#F2B34B; color:#191100; }
+  .d-panel { display:none; }
+  .d-panel.active { display:block; }
+  .pill.app { background:rgba(242,179,75,.15); color:#F2B34B; }
+  .pill.card { background:rgba(33,150,243,.15); color:#2196F3; }
+
+  /* Documents */
+  .doc-list { display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+  .doc-item { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; background:#080B12; border:1px solid #1D2635; border-radius:9px; }
+  .doc-item .di { display:flex; align-items:center; gap:10px; font-size:.85rem; color:#fff; }
+  .pill.warn { background:rgba(242,179,75,.15); color:#F2B34B; }
+
+  /* Quick actions */
+  .quick-actions { display:flex; gap:10px; margin-top:20px; }
+  .qa-btn { flex:1; display:flex; flex-direction:column; align-items:center; gap:6px; padding:14px 10px; background:#080B12; border:1px solid #1D2635; border-radius:10px; color:#A0B2C6; font-size:.78rem; font-weight:600; cursor:pointer; transition:.2s; text-decoration:none; font-family:'Inter',sans-serif; }
+  .qa-btn:hover { border-color:#F2B34B; color:#F2B34B; }
+  .qa-btn.sos { color:#E24B4A; border-color:rgba(226,75,74,.25); background:rgba(226,75,74,.06); }
+  .qa-btn.sos:hover { background:#E24B4A; color:#fff; border-color:#E24B4A; }
+
+  /* Notifications */
+  .notif-badge { margin-left:auto; background:#E24B4A; color:#fff; font-size:.72rem; font-weight:700; min-width:20px; height:20px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; padding:0 6px; font-family:'Space Mono',monospace; }
+  .notif-list { display:flex; flex-direction:column; gap:2px; }
+  .notif-item { display:flex; align-items:flex-start; gap:14px; padding:16px 4px; border-bottom:1px solid #1D2635; overflow:hidden; }
+  .notif-item:last-child { border-bottom:none; }
+  .ni-dot { width:8px; height:8px; border-radius:50%; background:#F2B34B; margin-top:6px; flex:0 0 auto; box-shadow:0 0 8px rgba(242,179,75,.6); }
+  .ni-dot.read { background:#2A3547; box-shadow:none; }
+  .ni-body { flex:1; display:flex; flex-direction:column; gap:3px; }
+  .ni-body b { font-size:.92rem; font-family:'Sora',sans-serif; font-weight:600; }
+  .ni-body span { font-size:.85rem; color:#A0B2C6; }
+  .ni-body small { font-size:.75rem; color:#69717F; font-family:'Space Mono',monospace; margin-top:2px; }
+  .ni-close { background:none; border:none; color:#69717F; font-size:1.1rem; line-height:1; cursor:pointer; padding:2px 4px; transition:.2s; flex:0 0 auto; }
+  .ni-close:hover { color:#E24B4A; }
+
+  /* Weekly schedule (Wochenplan) */
+  .wp-grid { display:flex; flex-direction:column; gap:10px; margin-top:20px; }
+  .wp-row { display:grid; grid-template-columns:64px 1fr 50px; gap:14px; align-items:center; padding:6px 8px; border-radius:8px; transition:background .2s; }
+  .wp-row.today { background:rgba(242,179,75,.06); }
+  .wp-day { display:flex; flex-direction:column; align-items:center; gap:2px; }
+  .wp-day .wd { font-weight:700; font-size:.85rem; font-family:'Sora',sans-serif; }
+  .wp-row.today .wp-day .wd { color:#F2B34B; }
+  .wp-day .wdate { font-size:.66rem; color:#69717F; font-family:'Space Mono',monospace; }
+  .wp-track { position:relative; height:28px; background:#080B12; border:1px solid #1D2635; border-radius:7px; overflow:hidden; }
+  .wp-hours { position:absolute; inset:0; display:flex; }
+  .wp-hours span { flex:1; border-left:1px solid rgba(255,255,255,.04); }
+  .wp-hours span:first-child { border-left:none; }
+  .wp-block { position:absolute; left:var(--start); width:var(--width); top:3px; bottom:3px; background:linear-gradient(90deg,#F2B34B,#F8CE7C); border-radius:5px; font-size:.68rem; color:#191100; font-weight:700; display:flex; align-items:center; justify-content:center; white-space:nowrap; overflow:hidden; transition:width .8s cubic-bezier(.2,.6,.2,1), opacity .8s; box-shadow:0 0 14px rgba(242,179,75,.25); }
+  .wp-row.today .wp-block { background:linear-gradient(90deg,#F8CE7C,#F2B34B); box-shadow:0 0 18px rgba(242,179,75,.4); }
+  .wp-off-label { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:.7rem; color:#69717F; font-family:'Space Mono',monospace; letter-spacing:.04em; }
+  .wp-total { text-align:right; font-family:'Space Mono',monospace; font-size:.78rem; color:#A0B2C6; }
+  .wp-row.today .wp-total { color:#F2B34B; font-weight:700; }
+  .wp-summary { display:flex; gap:24px; margin-top:22px; padding-top:18px; border-top:1px solid #1D2635; flex-wrap:wrap; }
+  .wp-summary .ws { display:flex; flex-direction:column; gap:3px; }
+  .wp-summary .ws b { font-family:'Sora',sans-serif; font-size:1.05rem; }
+  .wp-summary .ws span { font-size:.72rem; color:#69717F; text-transform:uppercase; letter-spacing:.06em; font-family:'Space Mono',monospace; }
+  .wp-summary .ws.over b { color:#F2B34B; }
+
+  /* Location & parking */
+  .park-map { position:relative; height:200px; border:1px solid #1D2635; border-radius:12px; overflow:hidden; margin-top:18px; background:
+      linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px) 0 0/28px 28px,
+      linear-gradient(0deg,rgba(255,255,255,0.025) 1px,transparent 1px) 0 0/28px 28px,
+      radial-gradient(60% 60% at 50% 45%,rgba(55,210,230,0.07),transparent 70%),
+      #080B12; }
+  .park-map svg { width:100%; height:100%; display:block; }
+  .pmark { cursor:pointer; }
+  .pmark circle.core { fill:#37D2E6; transition:fill .2s; }
+  .pmark circle.ring { transition:fill .2s; }
+  .pmark text { font-family:'Space Mono',monospace; font-size:8px; fill:#A0B2C6; transition:fill .2s; }
+  .pmark.active circle.core { fill:#F2B34B; }
+  .pmark.active circle.ring { fill:rgba(242,179,75,.18); }
+  .pmark.active text { fill:#F2B34B; font-weight:700; }
+  .pmark:hover text { fill:#fff; }
+  .park-info { margin-top:16px; padding:14px 16px; background:#080B12; border:1px solid #1D2635; border-radius:10px; }
+  .park-info .pi-name { font-family:'Sora',sans-serif; font-weight:700; font-size:.95rem; display:flex; align-items:center; gap:8px; }
+  .pi-badge { font-family:'Space Mono',monospace; font-size:.65rem; text-transform:uppercase; letter-spacing:.06em; background:rgba(76,175,80,.15); color:#4CAF50; padding:2px 8px; border-radius:10px; }
+  .park-info .pi-addr { font-size:.8rem; color:#A0B2C6; margin-top:4px; }
+  .park-info .pi-meta { display:flex; justify-content:space-between; margin-top:10px; padding-top:10px; border-top:1px solid #1D2635; font-size:.75rem; color:#69717F; font-family:'Space Mono',monospace; }
+  .park-list { display:flex; flex-direction:column; gap:8px; margin-top:14px; }
+  .park-item { display:flex; align-items:center; gap:10px; background:#080B12; border:1px solid #1D2635; border-radius:9px; padding:10px 12px; color:#A0B2C6; font-size:.82rem; font-weight:600; cursor:pointer; transition:.2s; text-align:left; font-family:'Inter',sans-serif; width:100%; }
+  .park-item:hover { border-color:#2A3547; color:#fff; }
+  .park-item .dot { width:8px; height:8px; border-radius:50%; background:#37D2E6; flex:0 0 auto; }
+  .park-item small { margin-left:auto; color:#69717F; font-weight:400; font-family:'Space Mono',monospace; font-size:.72rem; }
+  .park-item.active { border-color:rgba(242,179,75,.4); background:rgba(242,179,75,.06); color:#F2B34B; }
+  .park-item.active .dot { background:#F2B34B; }
+  .park-item.active small { color:#F2B34B; }
+
+  /* Icon button (header) */
+  .icon-btn { display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:10px; border:1px solid #1D2635; background:#080B12; color:#A0B2C6; cursor:pointer; transition:.2s; flex:0 0 auto; }
+  .icon-btn:hover { border-color:#F2B34B; color:#F2B34B; }
+
+  /* Toggle switch */
+  .tswitch { position:relative; display:inline-block; width:44px; height:24px; flex:0 0 auto; }
+  .tswitch input { opacity:0; width:0; height:0; position:absolute; }
+  .tswitch .slider { position:absolute; inset:0; background:#1D2635; border:1px solid #2A3547; border-radius:24px; transition:.2s; cursor:pointer; }
+  .tswitch .slider:before { content:''; position:absolute; width:16px; height:16px; left:2px; top:2px; background:#69717F; border-radius:50%; transition:.2s; }
+  .tswitch input:checked + .slider { background:rgba(242,179,75,.18); border-color:#F2B34B; }
+  .tswitch input:checked + .slider:before { transform:translateX(20px); background:#F2B34B; }
+  .tswitch input:disabled + .slider { opacity:.55; cursor:not-allowed; }
+  .tswitch input:focus-visible + .slider { outline:2px solid #F2B34B; outline-offset:2px; }
+
+  /* Settings rows & fields */
+  .set-row { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 0; border-bottom:1px solid #1D2635; }
+  .set-row .sr-label b { display:block; font-size:.92rem; font-family:'Sora',sans-serif; font-weight:600; }
+  .set-row .sr-label span { font-size:.8rem; color:#A0B2C6; }
+  .cp-fieldlabel { display:block; font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:#69717F; }
+  .cp-cancel-btn { background:transparent; border:1px solid #1D2635; color:#A0B2C6; padding:12px 22px; border-radius:8px; font-family:'Inter',sans-serif; font-weight:600; font-size:.9rem; cursor:pointer; transition:.2s; }
+  .cp-cancel-btn:hover { border-color:#2A3547; color:#fff; }
+
+  /* Control panel overlay */
+  .cp-overlay { position:fixed; inset:0; background:rgba(4,6,10,.72); backdrop-filter:blur(6px); z-index:500; display:none; align-items:center; justify-content:center; padding:24px; }
+  .cp-overlay.open { display:flex; }
+  .cp-box { width:100%; max-width:920px; max-height:86vh; background:#0C1019; border:1px solid #1D2635; border-radius:16px; overflow:hidden; display:grid; grid-template-columns:230px 1fr; grid-template-rows:1fr auto; box-shadow:0 40px 90px rgba(0,0,0,.6); }
+  .cp-side { grid-row:1 / 3; background:#080B12; border-right:1px solid #1D2635; padding:20px 0; overflow-y:auto; }
+  .cp-title { padding:0 20px 16px; font-family:'Sora',sans-serif; font-weight:800; font-size:1.05rem; }
+  .cp-tab { display:flex; align-items:center; gap:12px; width:100%; padding:12px 20px; background:none; border:none; border-left:2px solid transparent; color:#A0B2C6; font-family:'Inter',sans-serif; font-size:.86rem; font-weight:600; cursor:pointer; transition:.2s; text-align:left; }
+  .cp-tab:hover { color:#fff; background:rgba(255,255,255,.02); }
+  .cp-tab.active { color:#F2B34B; background:rgba(242,179,75,.06); border-left-color:#F2B34B; }
+  .cp-main { position:relative; padding:30px 34px; overflow-y:auto; }
+  .cp-close { position:absolute; top:18px; right:18px; background:none; border:none; color:#69717F; font-size:1.5rem; line-height:1; cursor:pointer; transition:.2s; }
+  .cp-close:hover { color:#fff; }
+  .cp-pane { display:none; }
+  .cp-pane.active { display:block; }
+  .cp-pane h4 { font-family:'Sora',sans-serif; font-size:1.15rem; margin-bottom:6px; padding-right:30px; }
+  .cp-pane .cp-desc { color:#A0B2C6; font-size:.85rem; margin-bottom:22px; }
+  .cp-foot { grid-column:2; display:flex; justify-content:flex-end; gap:10px; padding:18px 34px; border-top:1px solid #1D2635; background:#080B12; }
+
+  @media(max-width: 900px) {
+    .chart-wrap { gap:8px; }
+    .quick-actions { flex-wrap:wrap; }
+    .wp-row { grid-template-columns:50px 1fr 34px; gap:8px; }
+    .park-map { height:170px; }
+    .cp-box { grid-template-columns:1fr; grid-template-rows:auto 1fr auto; max-height:92vh; }
+    .cp-side { grid-row:1; border-right:none; border-bottom:1px solid #1D2635; display:flex; align-items:center; overflow-x:auto; padding:10px 12px; gap:2px; }
+    .cp-title { display:none; }
+    .cp-tab { flex:0 0 auto; border-left:none; border-bottom:2px solid transparent; white-space:nowrap; padding:10px 14px; }
+    .cp-tab.active { border-bottom-color:#F2B34B; }
+    .cp-foot { grid-column:1; }
+    .cp-main { padding:24px 20px; }
+  }
+
+  /* Incoming ride request modal */
+  .ride-req-box { width:100%; max-width:420px; background:#0C1019; border:1px solid #1D2635; border-radius:16px; padding:26px; box-shadow:0 40px 90px rgba(0,0,0,.6); }
+  .rr-head { display:flex; align-items:center; gap:16px; margin-bottom:18px; }
+  .rr-badge { font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:#F2B34B; margin-bottom:4px; }
+  .rr-fare { font-family:'Sora',sans-serif; font-weight:800; font-size:1.6rem; }
+  .rr-route { background:#080B12; border:1px solid #1D2635; border-radius:10px; padding:14px 16px; margin-bottom:14px; }
+  .rr-point { display:flex; align-items:flex-start; gap:10px; font-size:.88rem; }
+  .rr-point b { display:block; }
+  .rr-point small { color:#69717F; font-size:.76rem; }
+  .rr-dot { width:9px; height:9px; border-radius:50%; margin-top:5px; flex:0 0 auto; display:inline-block; }
+  .rr-dot.from { background:#F2B34B; }
+  .rr-dot.to { background:#37D2E6; }
+  .rr-line { width:1px; height:16px; background:#1D2635; margin:2px 0 2px 4px; }
+  .rr-meta { display:flex; gap:10px; flex-wrap:wrap; font-family:'Space Mono',monospace; font-size:.74rem; color:#A0B2C6; margin-bottom:18px; }
+  .rr-meta span { background:#141B27; border:1px solid #1D2635; padding:5px 10px; border-radius:20px; }
+  .rr-actions { display:flex; gap:10px; }
+  .rr-actions .btn { flex:1; justify-content:center; }
+  .rr-decline { color:#F29E9E; }
+  .pill.enroute { background:rgba(55,210,230,.15); color:#37D2E6; }
+
+  /* Active ride card */
+  .active-ride-card { border-color:rgba(242,179,75,.4); box-shadow:0 0 0 1px rgba(242,179,75,.15), 0 20px 50px rgba(0,0,0,.35); }
+  .ar-body { display:flex; flex-wrap:wrap; gap:24px; align-items:center; justify-content:space-between; margin-top:14px; }
+  .ar-customer { display:flex; align-items:center; gap:12px; }
+  .ar-avatar { width:42px; height:42px; border-radius:50%; background:#2A3547; color:#F2B34B; display:flex; align-items:center; justify-content:center; font-weight:700; flex:0 0 auto; }
+  .ar-fare { font-family:'Space Mono',monospace; font-weight:700; margin-left:12px; }
+  .ar-actions { display:flex; gap:10px; margin-top:18px; }
 </style>
 </head>
 <body>
@@ -74,7 +274,7 @@
     <p class="i18n" data-de="Bitte loggen Sie sich mit Ihrer Personalnummer ein." data-en="Please log in with your staff ID.">Bitte loggen Sie sich mit Ihrer Personalnummer ein.</p>
     <input type="text" class="login-input" placeholder="Personalnummer (z.B. 10042)" value="10042">
     <input type="password" class="login-input" placeholder="Passwort" value="********">
-    <button class="login-btn i18n" data-de="Einloggen" data-en="Log In" onclick="document.getElementById('login-overlay').style.display='none'">Einloggen</button>
+    <button class="login-btn i18n" data-de="Einloggen" data-en="Log In" onclick="document.getElementById('login-overlay').style.display='none'; if(window.onDriverLogin) window.onDriverLogin();">Einloggen</button>
   </div>
 </div>
 
@@ -86,6 +286,13 @@
       <span style="color:#A0B2C6; font-size:0.9rem; font-weight:400; margin-left:10px;" class="i18n" data-de="Fahrerportal" data-en="Driver Portal">Fahrerportal</span>
     </div>
     <div class="user-info">
+      <button class="icon-btn" id="openSettings" type="button" aria-label="Kontrollpanel öffnen" title="Kontrollpanel">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      </button>
+      <button class="avail-toggle" id="availToggle" type="button" aria-pressed="true">
+        <span class="dot"></span>
+        <span class="lbl" data-on="Online" data-off="Offline">Online</span>
+      </button>
       <div style="text-align: right;">
         <div style="font-weight: 600; font-size: 0.95rem;">Mustafa Yilmaz</div>
         <div style="font-size: 0.8rem; color: #4CAF50;">Fahrzeug: HH-BT 2026</div>
@@ -99,7 +306,7 @@
   <div class="d-grid">
     <div class="d-card">
       <div class="label i18n" data-de="Umsatz Heute" data-en="Today's Revenue">Umsatz Heute</div>
-      <div class="val">284,50 €</div>
+      <div class="val" id="kpiRevenueToday">284,50 €</div>
     </div>
     <div class="d-card">
       <div class="label i18n" data-de="Umsatz Woche (Laufend)" data-en="Weekly Revenue">Umsatz Woche (Laufend)</div>
@@ -107,7 +314,7 @@
     </div>
     <div class="d-card">
       <div class="label i18n" data-de="Fahrten Heute" data-en="Trips Today">Fahrten Heute</div>
-      <div class="val">14 <span>Ø 20,32 €</span></div>
+      <div class="val"><span id="kpiTripsCount">14</span> <span id="kpiTripsAvg">Ø 20,32 €</span></div>
     </div>
     <div class="d-card">
       <div class="label i18n" data-de="Bewertung" data-en="Rating">Bewertung</div>
@@ -115,14 +322,90 @@
     </div>
   </div>
 
+  <!-- Active ride (demo) -->
+  <div class="d-section active-ride-card" id="activeRideCard" style="display:none; margin-bottom:30px;">
+    <h3>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2B34B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L19 11l-2-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"></path><circle cx="6.5" cy="16.5" r="2.5"></circle><circle cx="16.5" cy="16.5" r="2.5"></circle></svg>
+      <span class="i18n" data-de="Aktuelle Fahrt" data-en="Current ride">Aktuelle Fahrt</span>
+      <span class="pill enroute" style="margin-left:auto;">Unterwegs</span>
+    </h3>
+    <div class="ar-body">
+      <div class="rr-route" style="flex:1;min-width:220px;margin-bottom:0;">
+        <div class="rr-point"><span class="rr-dot from"></span><div><b id="arFrom">—</b><small class="i18n" data-de="Abholung" data-en="Pickup">Abholung</small></div></div>
+        <div class="rr-line"></div>
+        <div class="rr-point"><span class="rr-dot to"></span><div><b id="arTo">—</b><small id="arDistance">—</small></div></div>
+      </div>
+      <div class="ar-customer">
+        <div class="ar-avatar" id="arCustInitials">KU</div>
+        <div><b id="arCustName">Kunde</b><div style="font-size:.8rem;color:#A0B2C6;" id="arCustPhone">—</div></div>
+        <div class="ar-fare" id="arFare">—</div>
+      </div>
+    </div>
+    <div class="ar-actions">
+      <a class="btn btn-ghost" id="arCallBtn" href="tel:" style="flex:1;justify-content:center;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2Z"></path></svg>
+        <span class="i18n" data-de="Anrufen" data-en="Call">Anrufen</span>
+      </a>
+      <button class="btn btn-gold" id="arCompleteBtn" type="button" style="flex:1;justify-content:center;"><span class="i18n" data-de="Fahrt abschließen" data-en="Complete ride">Fahrt abschließen</span></button>
+    </div>
+  </div>
+
+  <!-- Earnings Chart & Upcoming Shifts -->
+  <div class="d-layout" style="margin-bottom:30px;">
+    <div class="d-section">
+      <h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2B34B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+        <span class="i18n" data-de="Wochenverdienst" data-en="Weekly Earnings">Wochenverdienst</span>
+        <span style="margin-left:auto; font-family:'Space Mono',monospace; font-size:.85rem; color:#4CAF50; font-weight:700;">1.090,00 € <span style="color:#A0B2C6; font-weight:400;" class="i18n" data-de="/ Woche" data-en="/ week">/ Woche</span></span>
+      </h3>
+      <div class="chart-wrap">
+        <div class="chart-bar"><span class="bv">142€</span><div class="bar-track"><div class="bar" style="--h:52%"></div></div><span class="bd i18n" data-de="Mo" data-en="Mon">Mo</span></div>
+        <div class="chart-bar"><span class="bv">186€</span><div class="bar-track"><div class="bar" style="--h:68%"></div></div><span class="bd i18n" data-de="Di" data-en="Tue">Di</span></div>
+        <div class="chart-bar"><span class="bv">120€</span><div class="bar-track"><div class="bar" style="--h:44%"></div></div><span class="bd i18n" data-de="Mi" data-en="Wed">Mi</span></div>
+        <div class="chart-bar"><span class="bv">219€</span><div class="bar-track"><div class="bar" style="--h:80%"></div></div><span class="bd i18n" data-de="Do" data-en="Thu">Do</span></div>
+        <div class="chart-bar"><span class="bv">247€</span><div class="bar-track"><div class="bar" style="--h:90%"></div></div><span class="bd i18n" data-de="Fr" data-en="Fri">Fr</span></div>
+        <div class="chart-bar today"><span class="bv">176€</span><div class="bar-track"><div class="bar" style="--h:64%"></div></div><span class="bd i18n" data-de="Sa" data-en="Sat">Sa</span></div>
+        <div class="chart-bar future"><span class="bv">—</span><div class="bar-track"><div class="bar" style="--h:0%"></div></div><span class="bd i18n" data-de="So" data-en="Sun">So</span></div>
+      </div>
+    </div>
+    <div class="d-section" style="background: linear-gradient(180deg, #121824, #080B12);">
+      <h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2B34B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span class="i18n" data-de="Anstehende Schichten" data-en="Upcoming Shifts">Anstehende Schichten</span>
+      </h3>
+      <div class="shift-list">
+        <div class="shift-item">
+          <div class="sd today i18n" data-de="Heute" data-en="Today">Heute</div>
+          <div class="si"><b>14:00 – 22:00</b><span>NIO ET7 · HH-BT 2026</span></div>
+        </div>
+        <div class="shift-item">
+          <div class="sd i18n" data-de="Morgen" data-en="Tomorrow">Morgen</div>
+          <div class="si"><b>08:00 – 16:00</b><span>NIO ET7 · HH-BT 2026</span></div>
+        </div>
+        <div class="shift-item">
+          <div class="sd">Mo, 31.08.</div>
+          <div class="si"><b>14:00 – 22:00</b><span>NIO ET7 · HH-BT 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Layout -->
   <div class="d-layout">
     <!-- Left Col: Payslips -->
     <div class="d-section">
-      <h3>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2B34B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-        <span class="i18n" data-de="Lohnabrechnungen (Fisch-e Hoghughi)" data-en="Payslips (Fisch-e Hoghughi)">Lohnabrechnungen (Fisch-e Hoghughi)</span>
-      </h3>
+      <div class="d-tabs" id="dTabs">
+        <button class="d-tab active" data-target="panel-pay" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+          <span class="i18n" data-de="Lohnabrechnungen" data-en="Payslips">Lohnabrechnungen</span>
+        </button>
+        <button class="d-tab" data-target="panel-trips" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle><path d="M5 18H3V9l2-5h11l3 6h2v8h-2M5 18h10"></path></svg>
+          <span class="i18n" data-de="Fahrtenverlauf" data-en="Trip History">Fahrtenverlauf</span>
+        </button>
+      </div>
+
+      <div id="panel-pay" class="d-panel active">
       <p style="color: #A0B2C6; font-size: 0.9rem; margin-bottom: 20px;" class="i18n" data-de="Hier können Sie Ihre monatlichen Gehaltsnachweise und Schichtauswertungen im PDF-Format herunterladen." data-en="Here you can download your monthly payslips and shift reports in PDF format.">Hier können Sie Ihre monatlichen Gehaltsnachweise und Schichtauswertungen im PDF-Format herunterladen.</p>
       
       <div class="table-responsive">
@@ -163,6 +446,31 @@
         </tbody>
       </table>
       </div>
+      </div>
+
+      <div id="panel-trips" class="d-panel">
+      <p style="color: #A0B2C6; font-size: 0.9rem; margin-bottom: 20px;" class="i18n" data-de="Ihre heutigen Fahrten im Überblick." data-en="Your trips today at a glance.">Ihre heutigen Fahrten im Überblick.</p>
+      <div class="table-responsive">
+      <table class="d-table">
+        <thead>
+          <tr>
+            <th class="i18n" data-de="Zeit" data-en="Time">Zeit</th>
+            <th class="i18n" data-de="Strecke" data-en="Route">Strecke</th>
+            <th class="i18n" data-de="Preis" data-en="Fare">Preis</th>
+            <th class="i18n" data-de="Zahlung" data-en="Payment">Zahlung</th>
+            <th class="i18n" data-de="Bewertung" data-en="Rating">Bewertung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>14:52</td><td>Jungfernstieg → Flughafen HAM</td><td>38,00 €</td><td><span class="pill app">App</span></td><td>★★★★★</td></tr>
+          <tr><td>13:20</td><td>HafenCity → St. Pauli</td><td>16,50 €</td><td><span class="pill card">Karte</span></td><td>★★★★★</td></tr>
+          <tr><td>12:05</td><td>Altona → Eppendorf</td><td>21,90 €</td><td><span class="pill app">App</span></td><td>★★★★☆</td></tr>
+          <tr><td>10:41</td><td>Hauptbahnhof → Blankenese</td><td>29,40 €</td><td><span class="pill card">Karte</span></td><td>★★★★★</td></tr>
+          <tr><td>09:15</td><td>Wandsbek → HafenCity</td><td>17,20 €</td><td><span class="pill app">App</span></td><td>★★★★★</td></tr>
+        </tbody>
+      </table>
+      </div>
+      </div>
     </div>
 
     <!-- Right Col: Quick Info -->
@@ -187,6 +495,32 @@
         <div style="font-size: 0.85rem; color: #A0B2C6; line-height: 1.5;">NIO ET7 (HH-BT 2026)<br>Batteriestand: 84%<br>Nächste Wartung: 12.09.2026</div>
       </div>
 
+      <div class="doc-list">
+        <div class="doc-item">
+          <div class="di"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A0B2C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><span class="i18n" data-de="Personenbeförderungsschein" data-en="Passenger Transport License">Personenbeförderungsschein</span></div>
+          <span class="pill paid i18n" data-de="Gültig" data-en="Valid">Gültig</span>
+        </div>
+        <div class="doc-item">
+          <div class="di"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A0B2C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><span class="i18n" data-de="Führerschein" data-en="Driving License">Führerschein</span></div>
+          <span class="pill paid i18n" data-de="Gültig" data-en="Valid">Gültig</span>
+        </div>
+        <div class="doc-item">
+          <div class="di"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A0B2C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><span class="i18n" data-de="TÜV / Fahrzeugschein" data-en="Vehicle Inspection">TÜV / Fahrzeugschein</span></div>
+          <span class="pill warn i18n" data-de="Läuft bald ab" data-en="Expiring soon">Läuft bald ab</span>
+        </div>
+      </div>
+
+      <div class="quick-actions">
+        <a href="tel:+4940555055" class="qa-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2Z"></path></svg>
+          <span class="i18n" data-de="Support" data-en="Support">Support</span>
+        </a>
+        <button class="qa-btn sos" type="button" onclick="alert('Demo: Notfallmeldung an die Zentrale gesendet.')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>
+          <span class="i18n" data-de="SOS" data-en="SOS">SOS</span>
+        </button>
+      </div>
+
       <div style="margin-top: 30px;">
         <a href="index.html" style="color: #A0B2C6; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
           ← <span class="i18n" data-de="Zurück zur Startseite" data-en="Back to homepage">Zurück zur Startseite</span>
@@ -194,8 +528,696 @@
       </div>
     </div>
   </div>
+
+  <!-- Weekly Schedule & Parking -->
+  <div class="d-layout" style="margin-top:30px;">
+    <div class="d-section">
+      <h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2B34B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+        <span class="i18n" data-de="Wochenplan" data-en="Weekly Schedule">Wochenplan</span>
+        <span style="margin-left:auto; font-family:'Space Mono',monospace; font-size:.8rem; color:#A0B2C6;" class="i18n" data-de="24.–30. Aug." data-en="Aug 24–30">24.–30. Aug.</span>
+      </h3>
+      <div class="wp-grid">
+        <div class="wp-row">
+          <div class="wp-day"><span class="wd i18n" data-de="Mo" data-en="Mon">Mo</span><span class="wdate">24.08.</span></div>
+          <div class="wp-track"><div class="wp-hours"><span></span><span></span><span></span><span></span></div><div class="wp-block" style="--start:33.3%;--width:33.3%;" title="08:00–16:00">08:00–16:00</div></div>
+          <div class="wp-total">8h</div>
+        </div>
+        <div class="wp-row">
+          <div class="wp-day"><span class="wd i18n" data-de="Di" data-en="Tue">Di</span><span class="wdate">25.08.</span></div>
+          <div class="wp-track"><div class="wp-hours"><span></span><span></span><span></span><span></span></div><div class="wp-block" style="--start:33.3%;--width:33.3%;" title="08:00–16:00">08:00–16:00</div></div>
+          <div class="wp-total">8h</div>
+        </div>
+        <div class="wp-row">
+          <div class="wp-day"><span class="wd i18n" data-de="Mi" data-en="Wed">Mi</span><span class="wdate">26.08.</span></div>
+          <div class="wp-track"><div class="wp-hours"><span></span><span></span><span></span><span></span></div><div class="wp-off-label i18n" data-de="Frei" data-en="Day off">Frei</div></div>
+          <div class="wp-total" style="color:#69717F;">–</div>
+        </div>
+        <div class="wp-row">
+          <div class="wp-day"><span class="wd i18n" data-de="Do" data-en="Thu">Do</span><span class="wdate">27.08.</span></div>
+          <div class="wp-track"><div class="wp-hours"><span></span><span></span><span></span><span></span></div><div class="wp-block" style="--start:58.3%;--width:33.3%;" title="14:00–22:00">14:00–22:00</div></div>
+          <div class="wp-total">8h</div>
+        </div>
+        <div class="wp-row">
+          <div class="wp-day"><span class="wd i18n" data-de="Fr" data-en="Fri">Fr</span><span class="wdate">28.08.</span></div>
+          <div class="wp-track"><div class="wp-hours"><span></span><span></span><span></span><span></span></div><div class="wp-block" style="--start:58.3%;--width:33.3%;" title="14:00–22:00">14:00–22:00</div></div>
+          <div class="wp-total">8h</div>
+        </div>
+        <div class="wp-row today">
+          <div class="wp-day"><span class="wd i18n" data-de="Sa" data-en="Sat">Sa</span><span class="wdate">29.08.</span></div>
+          <div class="wp-track"><div class="wp-hours"><span></span><span></span><span></span><span></span></div><div class="wp-block" style="--start:58.3%;--width:33.3%;" title="14:00–22:00">14:00–22:00</div></div>
+          <div class="wp-total">8h</div>
+        </div>
+        <div class="wp-row">
+          <div class="wp-day"><span class="wd i18n" data-de="So" data-en="Sun">So</span><span class="wdate">30.08.</span></div>
+          <div class="wp-track"><div class="wp-hours"><span></span><span></span><span></span><span></span></div><div class="wp-block" style="--start:33.3%;--width:33.3%;" title="08:00–16:00">08:00–16:00</div></div>
+          <div class="wp-total">8h</div>
+        </div>
+      </div>
+      <div class="wp-summary">
+        <div class="ws over"><b>48h</b><span class="i18n" data-de="Geplant / Woche" data-en="Planned / week">Geplant / Woche</span></div>
+        <div class="ws"><b>40h</b><span class="i18n" data-de="Vertrag / Woche" data-en="Contract / week">Vertrag / Woche</span></div>
+        <div class="ws over"><b>+8h</b><span class="i18n" data-de="Überstunden" data-en="Overtime">Überstunden</span></div>
+        <div class="ws"><b>6 / 7</b><span class="i18n" data-de="Arbeitstage" data-en="Work days">Arbeitstage</span></div>
+      </div>
+    </div>
+
+    <div class="d-section" style="background: linear-gradient(180deg, #121824, #080B12);">
+      <h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2B34B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+        <span class="i18n" data-de="Standort & Parkplatz" data-en="Location & Parking">Standort & Parkplatz</span>
+      </h3>
+
+      <div class="park-map">
+        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Karte mit Taxiständen in der Nähe">
+          <g fill="#141C2B" opacity="0.7">
+            <rect x="14" y="30" width="34" height="46"></rect>
+            <rect x="60" y="14" width="24" height="70"></rect>
+            <polygon points="110,86 110,34 128,18 146,34 146,86"></polygon>
+            <rect x="170" y="26" width="26" height="58"></rect>
+            <polygon points="220,86 250,20 280,86"></polygon>
+            <rect x="20" y="120" width="40" height="46"></rect>
+            <rect x="80" y="110" width="26" height="56"></rect>
+            <rect x="220" y="118" width="50" height="48"></rect>
+          </g>
+          <path d="M10 96 Q80 84 160 96 Q240 108 310 92" fill="none" stroke="#37D2E6" stroke-width="1.5" opacity="0.35"></path>
+          <path d="M60 10 L60 190" stroke="#1D2635" stroke-width="1"></path>
+          <path d="M240 10 L240 190" stroke="#1D2635" stroke-width="1"></path>
+
+          <g class="pmark" data-stand="jungfernstieg">
+            <circle class="ring" cx="90" cy="60" r="9" fill="rgba(55,210,230,0.14)"></circle>
+            <circle class="core" cx="90" cy="60" r="4"></circle>
+            <text x="90" y="46" text-anchor="middle">Jungfernstieg</text>
+          </g>
+          <g class="pmark" data-stand="hbf">
+            <circle class="ring" cx="190" cy="70" r="9" fill="rgba(55,210,230,0.14)"></circle>
+            <circle class="core" cx="190" cy="70" r="4"></circle>
+            <text x="190" y="56" text-anchor="middle">Hbf</text>
+          </g>
+          <g class="pmark" data-stand="airport">
+            <circle class="ring" cx="255" cy="40" r="9" fill="rgba(55,210,230,0.14)"></circle>
+            <circle class="core" cx="255" cy="40" r="4"></circle>
+            <text x="255" y="26" text-anchor="middle">Flughafen</text>
+          </g>
+          <g class="pmark active you" data-stand="hafencity">
+            <circle cx="150" cy="140" r="6" fill="#F2B34B" opacity="0.55"><animate attributeName="r" from="6" to="20" dur="1.8s" repeatCount="indefinite"></animate><animate attributeName="opacity" from="0.55" to="0" dur="1.8s" repeatCount="indefinite"></animate></circle>
+            <circle class="ring" cx="150" cy="140" r="9" fill="rgba(242,179,75,0.18)"></circle>
+            <circle class="core" cx="150" cy="140" r="4"></circle>
+            <text x="150" y="160" text-anchor="middle">HafenCity</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="park-info" id="parkInfo">
+        <div class="pi-name">Taxistand HafenCity <span class="pi-badge i18n" data-de="Aktuell" data-en="Current">Aktuell</span></div>
+        <div class="pi-addr">Am Kaiserkai · 200 m <span class="i18n" data-de="entfernt" data-en="away">entfernt</span></div>
+        <div class="pi-meta"><span>4 / 8 <span class="i18n" data-de="frei" data-en="free">frei</span></span><span class="i18n" data-de="Geparkt seit 14:32" data-en="Parked since 14:32">Geparkt seit 14:32</span></div>
+      </div>
+
+      <div class="park-list" id="parkList">
+        <button class="park-item active" type="button" data-stand="hafencity" data-name="Taxistand HafenCity" data-addr="Am Kaiserkai" data-dist="200 m" data-free="4 / 8" data-current="1">
+          <span class="dot"></span> HafenCity <small>200 m · 4/8</small>
+        </button>
+        <button class="park-item" type="button" data-stand="jungfernstieg" data-name="Taxistand Jungfernstieg" data-addr="Jungfernstieg" data-dist="900 m" data-free="1 / 6" data-current="0">
+          <span class="dot"></span> Jungfernstieg <small>900 m · 1/6</small>
+        </button>
+        <button class="park-item" type="button" data-stand="hbf" data-name="Taxistand Hauptbahnhof Süd" data-addr="Hachmannplatz" data-dist="1,2 km" data-free="2 / 12" data-current="0">
+          <span class="dot"></span> Hauptbahnhof <small>1,2 km · 2/12</small>
+        </button>
+        <button class="park-item" type="button" data-stand="airport" data-name="Taxistand Flughafen T2" data-addr="Flughafenstraße" data-dist="8,4 km" data-free="6 / 20" data-current="0">
+          <span class="dot"></span> Flughafen T2 <small>8,4 km · 6/20</small>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notifications -->
+  <div class="d-section" style="margin-top:30px;">
+    <h3>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2B34B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+      <span class="i18n" data-de="Benachrichtigungen" data-en="Notifications">Benachrichtigungen</span>
+      <span class="notif-badge" id="notifBadge">3</span>
+    </h3>
+    <div class="notif-list" id="notifList">
+      <div class="notif-item unread">
+        <div class="ni-dot"></div>
+        <div class="ni-body">
+          <b class="i18n" data-de="Neue Firmenfahrt zugewiesen" data-en="New business ride assigned">Neue Firmenfahrt zugewiesen</b>
+          <span class="i18n" data-de="HafenCity → Flughafen HAM, morgen 07:30 Uhr" data-en="HafenCity → Airport HAM, tomorrow 7:30 AM">HafenCity → Flughafen HAM, morgen 07:30 Uhr</span>
+          <small class="i18n" data-de="Vor 12 Min." data-en="12 min ago">Vor 12 Min.</small>
+        </div>
+        <button class="ni-close" type="button" aria-label="Schließen">×</button>
+      </div>
+      <div class="notif-item unread">
+        <div class="ni-dot"></div>
+        <div class="ni-body">
+          <b class="i18n" data-de="Bonus erreicht: 50 Fahrten" data-en="Bonus reached: 50 rides">Bonus erreicht: 50 Fahrten</b>
+          <span class="i18n" data-de="Sie erhalten 25,00 € Bonus mit der nächsten Abrechnung." data-en="You'll receive a €25.00 bonus with the next payout.">Sie erhalten 25,00 € Bonus mit der nächsten Abrechnung.</span>
+          <small class="i18n" data-de="Vor 2 Std." data-en="2 hours ago">Vor 2 Std.</small>
+        </div>
+        <button class="ni-close" type="button" aria-label="Schließen">×</button>
+      </div>
+      <div class="notif-item unread">
+        <div class="ni-dot"></div>
+        <div class="ni-body">
+          <b class="i18n" data-de="Wartungstermin bald fällig" data-en="Maintenance due soon">Wartungstermin bald fällig</b>
+          <span class="i18n" data-de="NIO ET7 (HH-BT 2026) — Termin am 12.09.2026." data-en="NIO ET7 (HH-BT 2026) — appointment on Sep 12, 2026.">NIO ET7 (HH-BT 2026) — Termin am 12.09.2026.</span>
+          <small class="i18n" data-de="Gestern" data-en="Yesterday">Gestern</small>
+        </div>
+        <button class="ni-close" type="button" aria-label="Schließen">×</button>
+      </div>
+      <div class="notif-item">
+        <div class="ni-dot read"></div>
+        <div class="ni-body">
+          <b class="i18n" data-de="Lohnabrechnung Juli verfügbar" data-en="July payslip available">Lohnabrechnung Juli verfügbar</b>
+          <span class="i18n" data-de="Ihre Abrechnung für Juli 2026 steht zum Download bereit." data-en="Your payslip for July 2026 is ready to download.">Ihre Abrechnung für Juli 2026 steht zum Download bereit.</span>
+          <small>02.08.2026</small>
+        </div>
+        <button class="ni-close" type="button" aria-label="Schließen">×</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Control Panel / Settings Overlay (design only) -->
+<div class="cp-overlay" id="cpOverlay" aria-hidden="true">
+  <div class="cp-box" role="dialog" aria-modal="true" aria-label="Kontrollpanel">
+    <div class="cp-side">
+      <div class="cp-title i18n" data-de="Kontrollpanel" data-en="Control Panel">Kontrollpanel</div>
+      <button class="cp-tab active" data-pane="cp-profil" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span class="i18n" data-de="Profil" data-en="Profile">Profil</span>
+      </button>
+      <button class="cp-tab" data-pane="cp-verfuegbarkeit" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+        <span class="i18n" data-de="Verfügbarkeit" data-en="Availability">Verfügbarkeit</span>
+      </button>
+      <button class="cp-tab" data-pane="cp-benachrichtigungen" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        <span class="i18n" data-de="Benachrichtigungen" data-en="Notifications">Benachrichtigungen</span>
+      </button>
+      <button class="cp-tab" data-pane="cp-fahrzeug" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle><path d="M5 18H3V9l2-5h11l3 6h2v8h-2M5 18h10"></path></svg>
+        <span class="i18n" data-de="Fahrzeug & Standort" data-en="Vehicle & Location">Fahrzeug & Standort</span>
+      </button>
+      <button class="cp-tab" data-pane="cp-zahlungen" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18"></path></svg>
+        <span class="i18n" data-de="Zahlungen" data-en="Payments">Zahlungen</span>
+      </button>
+      <button class="cp-tab" data-pane="cp-app" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg>
+        <span class="i18n" data-de="App-Einstellungen" data-en="App Settings">App-Einstellungen</span>
+      </button>
+      <button class="cp-tab" data-pane="cp-sicherheit" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6l8-3Z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        <span class="i18n" data-de="Sicherheit" data-en="Security">Sicherheit</span>
+      </button>
+    </div>
+
+    <div class="cp-main">
+      <button class="cp-close" id="cpClose" type="button" aria-label="Schließen">×</button>
+
+      <div class="cp-pane active" id="cp-profil">
+        <h4 class="i18n" data-de="Profil" data-en="Profile">Profil</h4>
+        <p class="cp-desc i18n" data-de="Ihre persönlichen Daten und Kontaktinformationen." data-en="Your personal data and contact information.">Ihre persönlichen Daten und Kontaktinformationen.</p>
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:26px;">
+          <div class="d-avatar" style="width:56px; height:56px; font-size:1.1rem;">MY</div>
+          <button class="qa-btn" style="flex:0 0 auto; padding:10px 18px; flex-direction:row;" type="button" onclick="alert('Demo: Profilbild-Upload')"><span class="i18n" data-de="Profilbild ändern" data-en="Change photo">Profilbild ändern</span></button>
+        </div>
+        <div class="set-row" style="flex-direction:column; align-items:stretch; gap:8px;">
+          <label class="cp-fieldlabel i18n" data-de="Name" data-en="Name">Name</label>
+          <input type="text" class="login-input" style="margin-bottom:0;" value="Mustafa Yilmaz">
+        </div>
+        <div class="set-row" style="flex-direction:column; align-items:stretch; gap:8px;">
+          <label class="cp-fieldlabel i18n" data-de="Telefon" data-en="Phone">Telefon</label>
+          <input type="text" class="login-input" style="margin-bottom:0;" value="+49 152 3344 5566">
+        </div>
+        <div class="set-row" style="flex-direction:column; align-items:stretch; gap:8px; border-bottom:none;">
+          <label class="cp-fieldlabel i18n" data-de="E-Mail" data-en="Email">E-Mail</label>
+          <input type="email" class="login-input" style="margin-bottom:0;" value="m.yilmaz@blitztaxi-yildirim.de">
+        </div>
+      </div>
+
+      <div class="cp-pane" id="cp-verfuegbarkeit">
+        <h4 class="i18n" data-de="Verfügbarkeit" data-en="Availability">Verfügbarkeit</h4>
+        <p class="cp-desc i18n" data-de="Standardmäßige Verfügbarkeit pro Wochentag." data-en="Default availability per weekday.">Standardmäßige Verfügbarkeit pro Wochentag.</p>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Montag" data-en="Monday">Montag</b><span>08:00 – 16:00</span></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Dienstag" data-en="Tuesday">Dienstag</b><span>08:00 – 16:00</span></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Mittwoch" data-en="Wednesday">Mittwoch</b><span class="i18n" data-de="Frei" data-en="Day off">Frei</span></div><label class="tswitch"><input type="checkbox"><span class="slider"></span></label></div>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Donnerstag" data-en="Thursday">Donnerstag</b><span>14:00 – 22:00</span></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Freitag" data-en="Friday">Freitag</b><span>14:00 – 22:00</span></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Samstag" data-en="Saturday">Samstag</b><span>14:00 – 22:00</span></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="set-row" style="border-bottom:none;"><div class="sr-label"><b class="i18n" data-de="Sonntag" data-en="Sunday">Sonntag</b><span>08:00 – 16:00</span></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+      </div>
+
+      <div class="cp-pane" id="cp-benachrichtigungen">
+        <h4 class="i18n" data-de="Benachrichtigungen" data-en="Notifications">Benachrichtigungen</h4>
+        <p class="cp-desc i18n" data-de="Wie und wann Sie informiert werden möchten." data-en="How and when you want to be informed.">Wie und wann Sie informiert werden möchten.</p>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Push-Benachrichtigungen" data-en="Push notifications">Push-Benachrichtigungen</b><span class="i18n" data-de="Direkt auf Ihr Gerät" data-en="Directly to your device">Direkt auf Ihr Gerät</span></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="E-Mail" data-en="Email">E-Mail</b><span class="i18n" data-de="Zusammenfassung & Belege" data-en="Summaries & receipts">Zusammenfassung & Belege</span></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="SMS" data-en="SMS">SMS</b><span class="i18n" data-de="Nur bei dringenden Meldungen" data-en="Urgent alerts only">Nur bei dringenden Meldungen</span></div><label class="tswitch"><input type="checkbox"><span class="slider"></span></label></div>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Neue Fahrtenzuweisung" data-en="New ride assignment">Neue Fahrtenzuweisung</b></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Lohnabrechnung verfügbar" data-en="Payslip available">Lohnabrechnung verfügbar</b></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+        <div class="set-row" style="border-bottom:none;"><div class="sr-label"><b class="i18n" data-de="Wartungserinnerungen" data-en="Maintenance reminders">Wartungserinnerungen</b></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+      </div>
+
+      <div class="cp-pane" id="cp-fahrzeug">
+        <h4 class="i18n" data-de="Fahrzeug & Standort" data-en="Vehicle & Location">Fahrzeug & Standort</h4>
+        <p class="cp-desc i18n" data-de="Ihr zugewiesenes Fahrzeug und Standard-Parkplatz." data-en="Your assigned vehicle and default parking spot.">Ihr zugewiesenes Fahrzeug und Standard-Parkplatz.</p>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Fahrzeug" data-en="Vehicle">Fahrzeug</b><span>NIO ET7 · HH-BT 2026</span></div>
+          <button class="qa-btn" style="flex:0 0 auto; padding:8px 16px; flex-direction:row;" type="button" onclick="alert('Demo: Fahrzeugwechsel angefragt')"><span class="i18n" data-de="Wechseln" data-en="Change">Wechseln</span></button>
+        </div>
+        <div class="set-row" style="flex-direction:column; align-items:stretch; gap:8px; border-bottom:none;">
+          <label class="cp-fieldlabel i18n" data-de="Standard-Parkplatz" data-en="Default parking spot">Standard-Parkplatz</label>
+          <select class="login-input" style="margin-bottom:0;">
+            <option>Taxistand HafenCity</option>
+            <option>Taxistand Jungfernstieg</option>
+            <option>Taxistand Hauptbahnhof Süd</option>
+            <option>Taxistand Flughafen T2</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cp-pane" id="cp-zahlungen">
+        <h4 class="i18n" data-de="Zahlungen" data-en="Payments">Zahlungen</h4>
+        <p class="cp-desc i18n" data-de="Auszahlungskonto und Abrechnungsintervall." data-en="Payout account and billing interval.">Auszahlungskonto und Abrechnungsintervall.</p>
+        <div class="set-row" style="flex-direction:column; align-items:stretch; gap:8px;">
+          <label class="cp-fieldlabel i18n" data-de="IBAN" data-en="IBAN">IBAN</label>
+          <input type="text" class="login-input" style="margin-bottom:0;" value="DE•• •••• •••• •••• 42">
+        </div>
+        <div class="set-row" style="flex-direction:column; align-items:stretch; gap:8px;">
+          <label class="cp-fieldlabel i18n" data-de="Auszahlungsintervall" data-en="Payout interval">Auszahlungsintervall</label>
+          <select class="login-input" style="margin-bottom:0;">
+            <option class="i18n" data-de="Wöchentlich" data-en="Weekly">Wöchentlich</option>
+            <option class="i18n" data-de="Monatlich" data-en="Monthly">Monatlich</option>
+          </select>
+        </div>
+        <div class="set-row" style="border-bottom:none;"><div class="sr-label"><b class="i18n" data-de="Digitale Belege" data-en="Digital receipts">Digitale Belege</b><span class="i18n" data-de="Per E-Mail statt Papier" data-en="By email instead of paper">Per E-Mail statt Papier</span></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+      </div>
+
+      <div class="cp-pane" id="cp-app">
+        <h4 class="i18n" data-de="App-Einstellungen" data-en="App Settings">App-Einstellungen</h4>
+        <p class="cp-desc i18n" data-de="Sprache, Einheiten und Darstellung." data-en="Language, units and appearance.">Sprache, Einheiten und Darstellung.</p>
+        <div class="set-row" style="flex-direction:column; align-items:stretch; gap:8px;">
+          <label class="cp-fieldlabel i18n" data-de="Sprache" data-en="Language">Sprache</label>
+          <select class="login-input" style="margin-bottom:0;"><option>Deutsch</option><option>English</option></select>
+        </div>
+        <div class="set-row" style="flex-direction:column; align-items:stretch; gap:8px;">
+          <label class="cp-fieldlabel i18n" data-de="Distanzeinheit" data-en="Distance unit">Distanzeinheit</label>
+          <select class="login-input" style="margin-bottom:0;"><option>Kilometer</option><option>Meilen</option></select>
+        </div>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Dunkles Design" data-en="Dark mode">Dunkles Design</b><span class="i18n" data-de="Empfohlen für Nachtfahrten" data-en="Recommended for night shifts">Empfohlen für Nachtfahrten</span></div><label class="tswitch"><input type="checkbox" checked disabled><span class="slider"></span></label></div>
+        <div class="set-row" style="border-bottom:none;"><div class="sr-label"><b class="i18n" data-de="Sounds" data-en="Sounds">Sounds</b><span class="i18n" data-de="Töne bei neuen Fahrten" data-en="Sound on new rides">Töne bei neuen Fahrten</span></div><label class="tswitch"><input type="checkbox" checked><span class="slider"></span></label></div>
+      </div>
+
+      <div class="cp-pane" id="cp-sicherheit">
+        <h4 class="i18n" data-de="Sicherheit" data-en="Security">Sicherheit</h4>
+        <p class="cp-desc i18n" data-de="Passwort, Anmeldungen und Kontoschutz." data-en="Password, sign-ins and account protection.">Passwort, Anmeldungen und Kontoschutz.</p>
+        <div class="set-row" style="flex-direction:column; align-items:stretch; gap:8px;">
+          <label class="cp-fieldlabel i18n" data-de="Neues Passwort" data-en="New password">Neues Passwort</label>
+          <input type="password" class="login-input" style="margin-bottom:0;" placeholder="••••••••">
+        </div>
+        <div class="set-row"><div class="sr-label"><b class="i18n" data-de="Zwei-Faktor-Authentifizierung" data-en="Two-factor authentication">Zwei-Faktor-Authentifizierung</b><span class="i18n" data-de="Zusätzlicher Schutz beim Login" data-en="Extra protection at login">Zusätzlicher Schutz beim Login</span></div><label class="tswitch"><input type="checkbox"><span class="slider"></span></label></div>
+        <div class="set-row" style="border-bottom:none;">
+          <div class="sr-label"><b class="i18n" data-de="Aktive Sitzungen" data-en="Active sessions">Aktive Sitzungen</b><span class="i18n" data-de="1 Gerät angemeldet" data-en="1 device signed in">1 Gerät angemeldet</span></div>
+          <button class="qa-btn" style="flex:0 0 auto; padding:8px 16px; flex-direction:row; color:#E24B4A; border-color:rgba(226,75,74,.25);" type="button" onclick="alert('Demo: Alle Geräte abgemeldet')"><span class="i18n" data-de="Abmelden" data-en="Sign out">Abmelden</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cp-foot">
+      <button class="cp-cancel-btn" type="button" id="cpCancel"><span class="i18n" data-de="Abbrechen" data-en="Cancel">Abbrechen</span></button>
+      <button class="login-btn" type="button" style="width:auto; padding:12px 24px;" onclick="alert('Demo: Einstellungen gespeichert.')"><span class="i18n" data-de="Änderungen speichern" data-en="Save changes">Änderungen speichern</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- Incoming ride request (demo) -->
+<div class="cp-overlay" id="rideReqOverlay" aria-hidden="true">
+  <div class="ride-req-box" role="dialog" aria-modal="true" aria-label="Neue Fahrtanfrage">
+    <div class="rr-head">
+      <svg width="60" height="60" viewBox="0 0 64 64" style="flex:0 0 auto;">
+        <circle cx="32" cy="32" r="27" fill="none" stroke="#1D2635" stroke-width="5"></circle>
+        <circle cx="32" cy="32" r="27" fill="none" stroke="#F2B34B" stroke-width="5" stroke-linecap="round" id="rrRingProgress" style="stroke-dasharray:169.6;stroke-dashoffset:0;transform:rotate(-90deg);transform-origin:32px 32px;transition:stroke-dashoffset 1s linear;"></circle>
+        <text x="32" y="38" text-anchor="middle" id="rrCountdown" style="font-family:'Space Mono',monospace;font-size:18px;fill:#F4F2EC;">15</text>
+      </svg>
+      <div>
+        <div class="rr-badge i18n" data-de="Neue Fahrtanfrage" data-en="New ride request">Neue Fahrtanfrage</div>
+        <div class="rr-fare" id="rrFare">18,50 €</div>
+      </div>
+    </div>
+    <div class="rr-route">
+      <div class="rr-point"><span class="rr-dot from"></span><div><b id="rrFrom">Jungfernstieg</b><small class="i18n" data-de="Abholung" data-en="Pickup">Abholung</small> · <small id="rrEta">3 Min.</small></div></div>
+      <div class="rr-line"></div>
+      <div class="rr-point"><span class="rr-dot to"></span><div><b id="rrTo">Flughafen Hamburg (HAM)</b><small id="rrDistance">14,2 km</small></div></div>
+    </div>
+    <div class="rr-meta">
+      <span id="rrPax">2 Personen</span><span id="rrClass">Standard</span><span id="rrPay">Karte</span>
+    </div>
+    <div class="rr-actions">
+      <button class="btn btn-ghost rr-decline" id="rrDecline" type="button"><span class="i18n" data-de="Ablehnen" data-en="Decline">Ablehnen</span></button>
+      <button class="btn btn-gold" id="rrAccept" type="button"><span class="i18n" data-de="Annehmen" data-en="Accept">Annehmen</span></button>
+    </div>
+  </div>
 </div>
 
 <script src="js/main.js"></script>
+<script>
+  // Availability toggle
+  (function(){
+    const btn = document.getElementById('availToggle');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      const off = btn.classList.toggle('off');
+      btn.setAttribute('aria-pressed', String(!off));
+      const lbl = btn.querySelector('.lbl');
+      lbl.textContent = off ? (lbl.dataset.off || 'Offline') : (lbl.dataset.on || 'Online');
+    });
+  })();
+
+  // Dashboard tabs (Lohnabrechnungen / Fahrtenverlauf)
+  (function(){
+    document.querySelectorAll('.d-tab').forEach(function(tab){
+      tab.addEventListener('click', function(){
+        document.querySelectorAll('.d-tab').forEach(function(t){ t.classList.remove('active'); });
+        document.querySelectorAll('.d-panel').forEach(function(p){ p.classList.remove('active'); });
+        tab.classList.add('active');
+        const target = document.getElementById(tab.dataset.target);
+        if(target) target.classList.add('active');
+      });
+    });
+  })();
+
+  // Notifications: dismiss + unread badge
+  (function(){
+    const badge = document.getElementById('notifBadge');
+    function updateBadge(){
+      const unread = document.querySelectorAll('.notif-item.unread').length;
+      if(!badge) return;
+      badge.textContent = unread;
+      badge.style.display = unread > 0 ? 'inline-flex' : 'none';
+    }
+    document.querySelectorAll('.ni-close').forEach(function(closeBtn){
+      closeBtn.addEventListener('click', function(){
+        const item = closeBtn.closest('.notif-item');
+        if(!item) return;
+        item.style.overflow = 'hidden';
+        item.style.transition = 'opacity .3s, transform .3s, max-height .3s ease, padding .3s, margin .3s';
+        item.style.maxHeight = item.offsetHeight + 'px';
+        requestAnimationFrame(function(){
+          item.style.opacity = '0';
+          item.style.transform = 'translateX(12px)';
+          item.style.maxHeight = '0px';
+          item.style.paddingTop = '0px';
+          item.style.paddingBottom = '0px';
+        });
+        setTimeout(function(){ item.remove(); updateBadge(); }, 320);
+      });
+    });
+    updateBadge();
+  })();
+
+  // Animate weekly earnings bars in on load
+  (function(){
+    const bars = document.querySelectorAll('.chart-bar .bar');
+    if(!bars.length) return;
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduceMotion) return;
+    const targets = [];
+    bars.forEach(function(bar){
+      targets.push(bar.style.getPropertyValue('--h'));
+      bar.style.setProperty('--h', '0%');
+    });
+    requestAnimationFrame(function(){
+      bars.forEach(function(bar, i){
+        setTimeout(function(){ bar.style.setProperty('--h', targets[i]); }, 80 + i * 90);
+      });
+    });
+  })();
+
+  // Weekly schedule: animate shift blocks growing in on load
+  (function(){
+    const blocks = document.querySelectorAll('.wp-block');
+    if(!blocks.length) return;
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduceMotion) return;
+    const widths = [];
+    blocks.forEach(function(b){
+      widths.push(b.style.getPropertyValue('--width'));
+      b.style.setProperty('--width', '0%');
+      b.style.opacity = '0';
+    });
+    requestAnimationFrame(function(){
+      blocks.forEach(function(b, i){
+        setTimeout(function(){
+          b.style.setProperty('--width', widths[i]);
+          b.style.opacity = '1';
+        }, 100 + i * 80);
+      });
+    });
+  })();
+
+  // Location & parking: sync map markers with the stand list, update info card
+  (function(){
+    const info = document.getElementById('parkInfo');
+    if(!info) return;
+    const nodes = document.querySelectorAll('[data-stand]');
+    function activate(standId){
+      nodes.forEach(function(el){ el.classList.toggle('active', el.dataset.stand === standId); });
+      const btn = document.querySelector('.park-item[data-stand="' + standId + '"]');
+      if(!btn) return;
+      const isCurrent = btn.dataset.current === '1';
+      info.querySelector('.pi-name').innerHTML = btn.dataset.name + (isCurrent ? ' <span class="pi-badge">Aktuell</span>' : '');
+      info.querySelector('.pi-addr').textContent = btn.dataset.addr + ' · ' + btn.dataset.dist + ' entfernt';
+      info.querySelector('.pi-meta').innerHTML = '<span>' + btn.dataset.free + ' frei</span><span>' + (isCurrent ? 'Geparkt seit 14:32' : 'Route anzeigen \u2192') + '</span>';
+    }
+    nodes.forEach(function(el){
+      el.addEventListener('click', function(){ activate(el.dataset.stand); });
+    });
+  })();
+
+  // Control panel (design-only settings overlay)
+  (function(){
+    const openBtn = document.getElementById('openSettings');
+    const overlay = document.getElementById('cpOverlay');
+    if(!openBtn || !overlay) return;
+    const closeBtn = document.getElementById('cpClose');
+    const cancelBtn = document.getElementById('cpCancel');
+
+    function openPanel(){
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePanel(){
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openPanel);
+    if(closeBtn) closeBtn.addEventListener('click', closePanel);
+    if(cancelBtn) cancelBtn.addEventListener('click', closePanel);
+    overlay.addEventListener('click', function(e){ if(e.target === overlay) closePanel(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && overlay.classList.contains('open')) closePanel();
+    });
+
+    document.querySelectorAll('.cp-tab').forEach(function(tab){
+      tab.addEventListener('click', function(){
+        document.querySelectorAll('.cp-tab').forEach(function(t){ t.classList.remove('active'); });
+        document.querySelectorAll('.cp-pane').forEach(function(p){ p.classList.remove('active'); });
+        tab.classList.add('active');
+        const pane = document.getElementById(tab.dataset.pane);
+        if(pane) pane.classList.add('active');
+      });
+    });
+  })();
+</script>
+<script>
+  // ===== Incoming ride request simulation (demo) =====
+  (function(){
+    var overlay = document.getElementById('rideReqOverlay');
+    var availBtn = document.getElementById('availToggle');
+    var activeCard = document.getElementById('activeRideCard');
+    if(!overlay || !activeCard) return;
+
+    var SCENARIOS = [
+      {from:'HafenCity', to:'St. Georg', pax:'2 Personen', cls:'Standard', pay:'Karte', fare:'12,80 €', dist:'4,1 km', eta:'3 Min.', cust:'Lena Fischer', phone:'+49 152 3312 8890'},
+      {from:'Altona', to:'Blankenese', pax:'3 Personen', cls:'Großraum', pay:'App', fare:'24,90 €', dist:'9,3 km', eta:'5 Min.', cust:'Jonas Weber', phone:'+49 176 4420 1187'},
+      {from:'Sternschanze', to:'Flughafen Hamburg (HAM)', pax:'1 Person', cls:'Business', pay:'App', fare:'34,00 €', dist:'12,6 km', eta:'6 Min.', cust:'Petra Klein', phone:'+49 160 7734 5521'},
+      {from:'Rathausmarkt', to:'Winterhude', pax:'1 Person', cls:'Standard', pay:'Bar', fare:'14,20 €', dist:'5,0 km', eta:'2 Min.', cust:'Tarek Amari', phone:'+49 171 2298 6634'},
+      {from:'Hauptbahnhof', to:'Eppendorf', pax:'2 Personen', cls:'Standard', pay:'Karte', fare:'16,60 €', dist:'5,8 km', eta:'4 Min.', cust:'Nina Kowalski', phone:'+49 157 8801 4423'}
+    ];
+    var scenarioIndex = 0;
+    var currentScenario = null;
+    var requestTimer = null;
+    var countdownTimer = null;
+    var countdownLeft = 15;
+    var activeRideOn = false;
+    var RING_CIRC = 169.6;
+
+    function isOnline(){ return availBtn && !availBtn.classList.contains('off'); }
+    function isBusy(){ return overlay.classList.contains('open') || activeRideOn; }
+    function isSettingsOpen(){ var cp = document.getElementById('cpOverlay'); return !!(cp && cp.classList.contains('open')); }
+
+    function scheduleNextRequest(delayMs){
+      clearTimeout(requestTimer);
+      requestTimer = setTimeout(function(){
+        if(!isOnline() || isBusy() || isSettingsOpen()){ scheduleNextRequest(5000); return; }
+        showRideRequest();
+      }, delayMs);
+    }
+    window.onDriverLogin = function(){ scheduleNextRequest(4000); };
+
+    function updateRing(){
+      var ring = document.getElementById('rrRingProgress');
+      var txt = document.getElementById('rrCountdown');
+      if(ring) ring.style.strokeDashoffset = String(RING_CIRC * (1 - countdownLeft/15));
+      if(txt) txt.textContent = countdownLeft;
+    }
+
+    function showRideRequest(){
+      currentScenario = SCENARIOS[scenarioIndex % SCENARIOS.length];
+      scenarioIndex++;
+      var s = currentScenario;
+      document.getElementById('rrFrom').textContent = s.from;
+      document.getElementById('rrTo').textContent = s.to;
+      document.getElementById('rrEta').textContent = s.eta;
+      document.getElementById('rrDistance').textContent = s.dist;
+      document.getElementById('rrFare').textContent = s.fare;
+      document.getElementById('rrPax').textContent = s.pax;
+      document.getElementById('rrClass').textContent = s.cls;
+      document.getElementById('rrPay').textContent = s.pay;
+      countdownLeft = 15;
+      updateRing();
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      clearInterval(countdownTimer);
+      countdownTimer = setInterval(function(){
+        countdownLeft--;
+        updateRing();
+        if(countdownLeft <= 0){
+          clearInterval(countdownTimer);
+          hideRideRequest();
+          if(window.showToastFahrer) window.showToastFahrer('Anfrage verpasst — an einen anderen Fahrer weitergeleitet.');
+          scheduleNextRequest(25000);
+        }
+      }, 1000);
+    }
+
+    function hideRideRequest(){
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      clearInterval(countdownTimer);
+    }
+
+    function acceptRide(){
+      clearInterval(countdownTimer);
+      hideRideRequest();
+      var s = currentScenario;
+      if(!s) return;
+      activeRideOn = true;
+      document.getElementById('arFrom').textContent = s.from;
+      document.getElementById('arTo').textContent = s.to;
+      document.getElementById('arDistance').textContent = s.dist;
+      document.getElementById('arCustName').textContent = s.cust;
+      document.getElementById('arCustPhone').textContent = s.phone;
+      document.getElementById('arFare').textContent = s.fare;
+      var initials = s.cust.split(' ').map(function(p){ return p.charAt(0); }).join('').toUpperCase();
+      document.getElementById('arCustInitials').textContent = initials;
+      var callBtn = document.getElementById('arCallBtn');
+      if(callBtn) callBtn.setAttribute('href', 'tel:' + s.phone.replace(/\s+/g,''));
+      activeCard.style.display = 'block';
+      activeCard.scrollIntoView({behavior:'smooth', block:'center'});
+      if(window.showToastFahrer) window.showToastFahrer('Fahrt angenommen — Navigation gestartet.');
+    }
+
+    function declineRide(){
+      clearInterval(countdownTimer);
+      hideRideRequest();
+      if(window.showToastFahrer) window.showToastFahrer('Anfrage abgelehnt.');
+      scheduleNextRequest(20000);
+    }
+
+    function completeRide(){
+      var s = currentScenario;
+      activeRideOn = false;
+      activeCard.style.display = 'none';
+      if(s){
+        var revEl = document.getElementById('kpiRevenueToday');
+        var countEl = document.getElementById('kpiTripsCount');
+        var avgEl = document.getElementById('kpiTripsAvg');
+        var fareNum = parseFloat(s.fare.replace(/[^0-9,]/g,'').replace(',', '.')) || 0;
+        if(revEl){
+          var cur = parseFloat(revEl.textContent.replace(/[^0-9,]/g,'').replace(',', '.')) || 0;
+          var next = cur + fareNum;
+          revEl.textContent = next.toLocaleString('de-DE', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' €';
+        }
+        if(countEl){
+          var curCount = parseInt(countEl.textContent, 10) || 0;
+          var nextCount = curCount + 1;
+          countEl.textContent = nextCount;
+          if(avgEl && revEl){
+            var revNow = parseFloat(revEl.textContent.replace(/[^0-9,]/g,'').replace(',', '.')) || 0;
+            avgEl.textContent = 'Ø ' + (revNow / nextCount).toLocaleString('de-DE', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' €';
+          }
+        }
+        var tbody = document.querySelector('#panel-trips table.d-table tbody');
+        if(tbody){
+          var now = new Date();
+          var hh = String(now.getHours()).padStart(2,'0');
+          var mm = String(now.getMinutes()).padStart(2,'0');
+          var payClass = (s.pay === 'App') ? 'app' : 'card';
+          var tr = document.createElement('tr');
+          tr.innerHTML = '<td>' + hh + ':' + mm + '</td><td>' + s.from + ' → ' + s.to + '</td><td>' + s.fare + '</td><td><span class="pill ' + payClass + '">' + s.pay + '</span></td><td>—</td>';
+          tbody.insertBefore(tr, tbody.firstChild);
+        }
+      }
+      if(window.showToastFahrer) window.showToastFahrer('Fahrt abgeschlossen. Gut gemacht!');
+      scheduleNextRequest(25000);
+    }
+
+    var rrAccept = document.getElementById('rrAccept');
+    var rrDecline = document.getElementById('rrDecline');
+    var arCompleteBtn = document.getElementById('arCompleteBtn');
+    if(rrAccept) rrAccept.onclick = acceptRide;
+    if(rrDecline) rrDecline.onclick = declineRide;
+    if(arCompleteBtn) arCompleteBtn.onclick = completeRide;
+
+    if(availBtn){
+      availBtn.addEventListener('click', function(){
+        if(availBtn.classList.contains('off')){
+          clearTimeout(requestTimer);
+          hideRideRequest();
+        } else {
+          scheduleNextRequest(6000);
+        }
+      });
+    }
+  })();
+
+  // Simple toast helper reused by the ride-request flow
+  (function(){
+    var toastEl = document.getElementById('fahrerToast');
+    if(!toastEl){
+      toastEl = document.createElement('div');
+      toastEl.id = 'fahrerToast';
+      toastEl.style.cssText = 'position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:#141B27;border:1px solid #2A3547;color:#fff;padding:12px 20px;border-radius:10px;font-size:.88rem;box-shadow:0 20px 50px rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .3s, transform .3s;z-index:1200;max-width:320px;text-align:center;';
+      document.body.appendChild(toastEl);
+    }
+    var hideTimer;
+    window.showToastFahrer = function(text){
+      toastEl.textContent = text;
+      toastEl.style.opacity = '1';
+      toastEl.style.transform = 'translateX(-50%) translateY(0)';
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(function(){
+        toastEl.style.opacity = '0';
+        toastEl.style.transform = 'translateX(-50%) translateY(20px)';
+      }, 3200);
+    };
+  })();
+</script>
 </body>
 </html>

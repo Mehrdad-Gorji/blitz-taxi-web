@@ -36,6 +36,7 @@
       <a href="#preise" class="i18n" data-de="Preise" data-en="Pricing">Preise</a>
       <a href="#gebiet" class="i18n" data-de="Gebiet" data-en="Coverage">Gebiet</a>
       <a href="#firmen" class="i18n" data-de="Firmen" data-en="Business">Firmen</a>
+      <a href="#karriere" class="i18n" data-de="Karriere" data-en="Careers">Karriere</a>
       <a href="#faq" class="i18n" data-de="FAQ" data-en="FAQ">FAQ</a>
     </nav>
     <div class="nav-right">
@@ -71,6 +72,7 @@
           <div class="stars" id="stars"></div>
           <svg class="sky-far" viewBox="0 0 560 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><g fill="#101724"><rect x="10" y="40" width="40" height="50"/><rect x="60" y="20" width="28" height="70"/><polygon points="120,90 120,30 138,10 156,30 156,90"/><rect x="180" y="34" width="22" height="56"/><polygon points="230,90 260,20 290,90"/><rect x="320" y="46" width="30" height="44"/><rect x="360" y="26" width="20" height="64"/><rect x="420" y="40" width="34" height="50"/><rect x="470" y="30" width="24" height="60"/><rect x="510" y="50" width="40" height="40"/></g></svg>
           <svg class="sky-near" viewBox="0 0 560 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><g fill="#18202E"><rect x="0" y="24" width="60" height="36"/><rect x="70" y="12" width="40" height="48"/><polygon points="140,60 140,20 162,4 184,20 184,60"/><rect x="210" y="18" width="30" height="42"/><polygon points="260,60 295,8 330,60" fill="#1D2635"/><rect x="360" y="26" width="40" height="34"/><rect x="415" y="10" width="26" height="50"/><rect x="470" y="22" width="90" height="38"/></g></svg>
+          <canvas class="particles-canvas" id="heroParticles" aria-hidden="true"></canvas>
           <div class="glow-h"></div>
           <div class="streaks"><i></i><i></i><i></i></div>
           <div class="road"><div class="lane"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
@@ -123,8 +125,15 @@
       <div class="tabs">
         <button class="tab active" data-tab="now"><svg class="ic"><use href="#i-bolt"/></svg> <span class="i18n" data-de="Sofort" data-en="Now">Sofort</span></button>
         <button class="tab" data-tab="later"><svg class="ic"><use href="#i-calendar"/></svg> <span class="i18n" data-de="Vorbestellung" data-en="Schedule">Vorbestellung</span></button>
+        <button class="tab" data-tab="package"><svg class="ic"><use href="#i-box"/></svg> <span class="i18n" data-de="Paket senden" data-en="Send package">Paket senden</span></button>
       </div>
       <div class="booking">
+        <div class="saved-places" id="savedPlaces">
+          <button type="button" class="chip-place" data-fill="Zuhause · Wrangelstraße 12, Hamburg"><svg class="ic" style="width:14px;height:14px;"><use href="#i-pin"/></svg> <span class="i18n" data-de="Zuhause" data-en="Home">Zuhause</span></button>
+          <button type="button" class="chip-place" data-fill="Büro · Speicherstadt 8, Hamburg"><svg class="ic" style="width:14px;height:14px;"><use href="#i-pin"/></svg> <span class="i18n" data-de="Arbeit" data-en="Work">Arbeit</span></button>
+          <button type="button" class="chip-place" data-fill="Flughafen Hamburg (HAM)"><svg class="ic" style="width:14px;height:14px;"><use href="#i-plane"/></svg> <span class="i18n" data-de="Flughafen" data-en="Airport">Flughafen</span></button>
+          <button type="button" class="chip-place" data-fill="Hauptbahnhof Hamburg"><svg class="ic" style="width:14px;height:14px;"><use href="#i-pin"/></svg> <span class="i18n" data-de="Hauptbahnhof" data-en="Main Station">Hauptbahnhof</span></button>
+        </div>
         <div class="brow">
           <div class="field has-pin">
             <label class="i18n" data-de="Von" data-en="From">Von</label>
@@ -141,6 +150,8 @@
             <label class="i18n" data-de="Fahrzeug" data-en="Vehicle">Fahrzeug</label>
             <select id="cls">
               <option value="std" class="i18n" data-de="Standard-Taxi (bis 4 Pers.)" data-en="Standard Taxi (up to 4 pax)">Standard-Taxi (bis 4 Pers.)</option>
+              <option value="business" class="i18n" data-de="Business-Taxi (Mercedes E-Klasse)" data-en="Business Taxi (Mercedes E-Class)">Business-Taxi (Mercedes E-Klasse)</option>
+              <option value="green" class="i18n" data-de="Öko-Taxi (Elektro, bis 4 Pers.)" data-en="Eco Taxi (Electric, up to 4 pax)">Öko-Taxi (Elektro, bis 4 Pers.)</option>
               <option value="van" class="i18n" data-de="Großraum-Taxi (ab 5 Pers.)" data-en="Large Capacity Taxi (5+ pax)">Großraum-Taxi (ab 5 Pers.)</option>
             </select>
           </div>
@@ -158,9 +169,114 @@
           <div class="txt"><svg class="ic"><use href="#i-euro"/></svg> <span class="i18n" data-de="Geschätzter Festpreis für diese Strecke" data-en="Estimated fixed price for this route">Geschätzter Festpreis für diese Strecke</span></div>
           <div class="amt"><span id="fare-amt">38,00 € – 44,00 €</span> <small class="i18n" data-de="inkl. MwSt." data-en="incl. VAT">inkl. MwSt.</small></div>
         </div>
+        <div class="extras-row">
+          <div class="field">
+            <label class="i18n" data-de="Rabattcode" data-en="Promo code">Rabattcode</label>
+            <div class="promo-box">
+              <input type="text" id="promoInput" placeholder="z. B. BLITZ10" maxlength="20">
+              <button type="button" class="btn btn-ghost" id="promoBtn"><span class="i18n" data-de="Einlösen" data-en="Apply">Einlösen</span></button>
+            </div>
+            <div class="promo-msg" id="promoMsg"></div>
+          </div>
+          <div class="split-box">
+            <div class="split-head">
+              <span class="i18n" data-de="Kosten mit Mitfahrern teilen" data-en="Split cost with riders">Kosten mit Mitfahrern teilen</span>
+              <label class="switch"><input type="checkbox" id="splitToggle"><span class="slider"></span></label>
+            </div>
+            <div class="split-detail" id="splitDetail">
+              <div class="counter"><button type="button" id="splitMinus">−</button><span id="splitCount">2</span><button type="button" id="splitPlus">+</button></div>
+              <span class="per-person" id="splitPerPerson">≈ – € / Person</span>
+            </div>
+          </div>
+        </div>
+        <div class="extras-row-2">
+          <div class="prefs-box">
+            <div class="prefs-title i18n" data-de="Ausstattung &amp; Präferenzen" data-en="Equipment &amp; preferences">Ausstattung &amp; Präferenzen</div>
+            <div class="pref-row">
+              <span class="pref-label"><svg class="ic" style="width:15px;height:15px;"><use href="#i-wheelchair"/></svg> <span class="i18n" data-de="Rollstuhlgerechtes Fahrzeug" data-en="Wheelchair-accessible vehicle">Rollstuhlgerechtes Fahrzeug</span></span>
+              <label class="switch"><input type="checkbox" id="accessWheelchair"><span class="slider"></span></label>
+            </div>
+            <div class="pref-row">
+              <span class="pref-label"><svg class="ic" style="width:15px;height:15px;"><use href="#i-users"/></svg> <span class="i18n" data-de="Kindersitz" data-en="Child seat">Kindersitz</span></span>
+              <label class="switch"><input type="checkbox" id="accessChildSeat"><span class="slider"></span></label>
+            </div>
+            <div class="pref-row">
+              <span class="pref-label"><svg class="ic" style="width:15px;height:15px;"><use href="#i-paw"/></svg> <span class="i18n" data-de="Haustier willkommen" data-en="Pet friendly">Haustier willkommen</span></span>
+              <label class="switch"><input type="checkbox" id="accessPet"><span class="slider"></span></label>
+            </div>
+            <div class="pref-row">
+              <span class="pref-label"><svg class="ic" style="width:15px;height:15px;"><use href="#i-star"/></svg> <span class="i18n" data-de="Weibliche Fahrerin bevorzugen" data-en="Prefer female driver">Weibliche Fahrerin bevorzugen</span></span>
+              <label class="switch"><input type="checkbox" id="prefFemaleDriver"><span class="slider"></span></label>
+            </div>
+          </div>
+          <div class="flight-box">
+            <div class="prefs-title i18n" data-de="Flugnummer (optional)" data-en="Flight number (optional)">Flugnummer (optional)</div>
+            <div class="promo-box">
+              <input type="text" id="flightNo" placeholder="z. B. LH2036" maxlength="10">
+              <button type="button" class="btn btn-ghost" id="flightCheckBtn"><span class="i18n" data-de="Status prüfen" data-en="Check status">Status prüfen</span></button>
+            </div>
+            <div class="promo-msg" id="flightStatus"></div>
+            <p class="flight-hint i18n" data-de="Wir gleichen Ihre Abholzeit automatisch mit dem Landezeitpunkt ab." data-en="We automatically align your pickup time with your landing time.">Wir gleichen Ihre Abholzeit automatisch mit dem Landezeitpunkt ab.</p>
+          </div>
+        </div>
+        <div class="package-box" id="packageBox">
+          <div class="prefs-title i18n" data-de="Paketdetails" data-en="Package details">Paketdetails</div>
+          <div class="brow">
+            <div class="field">
+              <label class="i18n" data-de="Paketgröße" data-en="Package size">Paketgröße</label>
+              <select id="packageSize">
+                <option value="s" class="i18n" data-de="Klein (bis 5 kg)" data-en="Small (up to 5 kg)">Klein (bis 5 kg)</option>
+                <option value="m" class="i18n" data-de="Mittel (bis 15 kg)" data-en="Medium (up to 15 kg)">Mittel (bis 15 kg)</option>
+                <option value="l" class="i18n" data-de="Groß (bis 30 kg)" data-en="Large (up to 30 kg)">Groß (bis 30 kg)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="i18n" data-de="Empfänger-Telefon" data-en="Recipient phone">Empfänger-Telefon</label>
+              <input id="packageRecipient" type="tel" placeholder="+49 1XX XXX XXXX">
+            </div>
+          </div>
+          <p class="flight-hint i18n" data-de="Ihr Fahrer holt das Paket ab und liefert es direkt beim Empfänger." data-en="Your driver picks up the package and delivers it directly to the recipient.">Ihr Fahrer holt das Paket ab und liefert es direkt beim Empfänger.</p>
+        </div>
+        <div class="brow contact-row" id="contactRow">
+          <div class="field" id="fieldName">
+            <label class="i18n" data-de="Name" data-en="Name">Name</label>
+            <input id="custName" type="text" placeholder="Ihr Name" autocomplete="name">
+          </div>
+          <div class="field" id="fieldPhone">
+            <label class="i18n" data-de="Telefon" data-en="Phone">Telefon</label>
+            <input id="custPhone" type="tel" placeholder="+49 1XX XXX XXXX" autocomplete="tel">
+          </div>
+          <button class="btn btn-gold" id="requestBtn" type="button"><span class="i18n" id="requestBtnLabel" data-de="Fahrt jetzt anfragen" data-en="Request ride now">Fahrt jetzt anfragen</span> <svg class="ic ar"><use href="#i-arrow"/></svg></button>
+        </div>
       </div>
     </div>
   </section>
+
+  <div class="wrap" style="padding-top:0;">
+    <div class="history-panel" id="historyPanel">
+      <div class="history-head" id="historyToggle">
+        <h4><span class="i18n" data-de="Meine letzten Fahrten" data-en="My recent rides">Meine letzten Fahrten</span> <span class="hcount" id="historyCount">(3)</span> <span class="hco2" id="historyCo2"></span></h4>
+        <svg class="ic history-toggle-ic" style="width:16px;height:16px;" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="history-list" id="historyList">
+        <div class="history-item">
+          <div class="hroute"><b>HafenCity → Flughafen Hamburg (HAM)</b><span class="hmeta">18.08.2026 · 07:42</span></div>
+          <span class="hstars">★★★★★</span>
+          <span class="hprice">41,50 €</span>
+        </div>
+        <div class="history-item">
+          <div class="hroute"><b>Eppendorf → Hauptbahnhof</b><span class="hmeta">12.08.2026 · 18:10</span></div>
+          <span class="hstars">★★★★★</span>
+          <span class="hprice">22,00 €</span>
+        </div>
+        <div class="history-item">
+          <div class="hroute"><b>Jungfernstieg → Altona</b><span class="hmeta">05.08.2026 · 21:35</span></div>
+          <span class="hstars">★★★★☆</span>
+          <span class="hprice">18,50 €</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="stats">
     <div class="wrap">
@@ -224,6 +340,12 @@
           <div class="price">4,50&nbsp;€ <span class="i18n" data-de="Grundpreis" data-en="base fare">Grundpreis</span></div>
           <ul><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="2,70 €/km (bis 9 km), ab 9 km 2,00 €/km" data-en="€2.70/km (up to 9 km), then €2.00/km">2,70 €/km (bis 9 km), ab 9 km 2,00 €/km</span></li><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Wartezeit: 38,00 € / Stunde" data-en="Waiting time: €38.00 / hour">Wartezeit: 38,00 € / Stunde</span></li><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Offizieller Hamburger Tarif 2025" data-en="Official Hamburg Tariff 2025">Offizieller Hamburger Tarif 2025</span></li></ul>
         </div>
+        <div class="fc">
+          <h3 class="i18n" data-de="Business-Taxi" data-en="Business Taxi">Business-Taxi</h3>
+          <div class="cap i18n" data-de="Mercedes E-Klasse · Bis 4 Personen" data-en="Mercedes E-Class · Up to 4 passengers">Mercedes E-Klasse · Bis 4 Personen</div>
+          <div class="price">8,00&nbsp;€ <span class="i18n" data-de="Grundpreis" data-en="base fare">Grundpreis</span></div>
+          <ul><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Premium-Kilometerpreis, ruhige Klimafahrt" data-en="Premium per-km rate, quiet climate-controlled ride">Premium-Kilometerpreis, ruhige Klimafahrt</span></li><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Namensschild-Abholung auf Wunsch" data-en="Name-board pickup on request">Namensschild-Abholung auf Wunsch</span></li><li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Ideal für Meetings &amp; Flughafentransfers" data-en="Ideal for meetings &amp; airport transfers">Ideal für Meetings &amp; Flughafentransfers</span></li></ul>
+        </div>
         <div class="fc feat-card">
           <div class="fbadge i18n" data-de="Gruppen" data-en="Groups">Gruppen</div>
           <h3 class="i18n" data-de="Großraum-Taxi" data-en="Large capacity taxi">Großraum-Taxi</h3>
@@ -241,6 +363,35 @@
       <div class="pays reveal">
         <span class="lbl i18n" data-de="Zahlung" data-en="Payment">Zahlung</span>
         <div class="chip">Visa</div><div class="chip">Mastercard</div><div class="chip">Amex</div><div class="chip">PayPal</div><div class="chip">Apple Pay</div><div class="chip">Google Pay</div><div class="chip i18n" data-de="Rechnung" data-en="Invoice">Rechnung</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="loyalty">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow i18n" data-de="Mitgliedschaft" data-en="Membership">Mitgliedschaft</div>
+        <h2 class="i18n" data-de="Blitz Plus — mehr Vorteile bei jeder Fahrt" data-en="Blitz Plus — more value on every ride">Blitz Plus — mehr Vorteile bei jeder Fahrt</h2>
+      </div>
+      <div class="loyalty-card reveal">
+        <div class="loyalty-left">
+          <div class="loyalty-icon"><svg class="ic" style="width:28px;height:28px;"><use href="#i-crown"/></svg></div>
+          <h3 class="i18n" data-de="Blitz Plus Mitgliedschaft" data-en="Blitz Plus membership">Blitz Plus Mitgliedschaft</h3>
+          <p class="i18n" data-de="9,99 € / Monat — jederzeit kündbar. Für Vielfahrer, Pendler und Firmenkunden." data-en="€9.99 / month — cancel anytime. For frequent riders, commuters and business clients.">9,99 € / Monat — jederzeit kündbar. Für Vielfahrer, Pendler und Firmenkunden.</p>
+          <ul class="loyalty-perks">
+            <li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="5% Rabatt auf jede Fahrt" data-en="5% off every ride">5% Rabatt auf jede Fahrt</span></li>
+            <li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Bevorzugte Fahrervermittlung" data-en="Priority driver matching">Bevorzugte Fahrervermittlung</span></li>
+            <li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Kostenlose Stornierung bis 5 Min. vorher" data-en="Free cancellation up to 5 min before">Kostenlose Stornierung bis 5 Min. vorher</span></li>
+            <li><svg class="ic"><use href="#i-check"/></svg><span class="i18n" data-de="Exklusive Monatsangebote" data-en="Exclusive monthly deals">Exklusive Monatsangebote</span></li>
+          </ul>
+          <button class="btn btn-gold" id="loyaltyJoinBtn" type="button"><span class="i18n" id="loyaltyBtnLabel" data-de="Blitz Plus beitreten" data-en="Join Blitz Plus">Blitz Plus beitreten</span> <svg class="ic ar"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="loyalty-right">
+          <div class="loyalty-tier-badge" id="loyaltyBadge">
+            <span class="i18n" data-de="Noch kein Mitglied" data-en="Not a member yet">Noch kein Mitglied</span>
+          </div>
+          <div class="loyalty-stat"><b id="loyaltySaved">0,00 €</b><span class="i18n" data-de="gespart mit Blitz Plus" data-en="saved with Blitz Plus">gespart mit Blitz Plus</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -347,6 +498,24 @@
     </div>
   </section>
 
+  <section id="karriere">
+    <div class="wrap">
+      <div class="biz reveal">
+        <div style="position:relative;z-index:2;">
+          <div class="eyebrow i18n" data-de="Karriere" data-en="Careers">Karriere</div>
+          <h2 style="margin-top:16px;" class="i18n" data-de="Werden Sie Teil unseres Teams" data-en="Join our team">Werden Sie Teil unseres Teams</h2>
+          <p class="i18n" data-de="Wir suchen freundliche, zuverlässige Fahrer:innen für unsere moderne Elektroflotte. Faire Vergütung, planbare Schichten und ein Team, das zusammenhält." data-en="We are looking for friendly, reliable drivers for our modern electric fleet. Fair pay, predictable shifts and a team that sticks together.">Wir suchen freundliche, zuverlässige Fahrer:innen für unsere moderne Elektroflotte. Faire Vergütung, planbare Schichten und ein Team, das zusammenhält.</p>
+          <a href="mailto:jobs@blitztaxi-yildirim.de?subject=Bewerbung%20als%20Fahrer%2Fin" class="btn btn-gold i18n" data-de="Jetzt bewerben" data-en="Apply now">Jetzt bewerben <svg class="ic ar"><use href="#i-arrow"/></svg></a>
+        </div>
+        <ul class="biz-list">
+          <li><div class="k"><svg class="ic"><use href="#i-euro"/></svg></div><div><b class="i18n" data-de="Faire Vergütung" data-en="Fair pay">Faire Vergütung</b><span class="i18n" data-de="Festes Gehalt plus Trinkgeld, pünktlich jeden Monat." data-en="Fixed salary plus tips, on time every month.">Festes Gehalt plus Trinkgeld, pünktlich jeden Monat.</span></div></li>
+          <li><div class="k"><svg class="ic"><use href="#i-clock"/></svg></div><div><b class="i18n" data-de="Flexible Schichten" data-en="Flexible shifts">Flexible Schichten</b><span class="i18n" data-de="Ihre Arbeitszeiten planen Sie über die Fahrer-App selbst." data-en="Plan your own working hours through the driver app.">Ihre Arbeitszeiten planen Sie über die Fahrer-App selbst.</span></div></li>
+          <li><div class="k"><svg class="ic"><use href="#i-bolt"/></svg></div><div><b class="i18n" data-de="Moderne E-Flotte" data-en="Modern EV fleet">Moderne E-Flotte</b><span class="i18n" data-de="Fahren Sie ausschließlich neuwertige, vollelektrische NIO ET7." data-en="Drive exclusively near-new, fully electric NIO ET7 cars.">Fahren Sie ausschließlich neuwertige, vollelektrische NIO ET7.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section id="reviews" style="background:var(--bg-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
     <div class="wrap">
       <div class="sec-head reveal">
@@ -422,7 +591,7 @@
         <p class="i18n" data-de="Ihr Festpreis-Taxi für Hamburg und Umgebung. 24 Stunden am Tag, 7 Tage die Woche." data-en="Your fixed-price taxi for Hamburg and surroundings. 24 hours a day, 7 days a week.">Ihr Festpreis-Taxi für Hamburg und Umgebung. 24 Stunden am Tag, 7 Tage die Woche.</p>
       </div>
       <div class="fcol"><h4 class="i18n" data-de="Kontakt" data-en="Contact">Kontakt</h4><a href="tel:+4940555055">+49 40 555 0 555</a><a href="mailto:info@blitztaxi-yildirim.de">info@blitztaxi-yildirim.de</a><p class="i18n" data-de="Speicherstadt 12, 20457 Hamburg" data-en="Speicherstadt 12, 20457 Hamburg">Speicherstadt 12, 20457 Hamburg</p></div>
-      <div class="fcol"><h4 class="i18n" data-de="Unternehmen" data-en="Company">Unternehmen</h4><a href="#flotte" class="i18n" data-de="Flotte" data-en="Fleet">Flotte</a><a href="#firmen" class="i18n" data-de="Für Firmenkunden" data-en="For business">Für Firmenkunden</a><a href="fahrer.html" class="i18n" data-de="Fahrerportal (Login)" data-en="Driver Portal (Login)">Fahrerportal (Login)</a></div>
+      <div class="fcol"><h4 class="i18n" data-de="Unternehmen" data-en="Company">Unternehmen</h4><a href="#flotte" class="i18n" data-de="Flotte" data-en="Fleet">Flotte</a><a href="#firmen" class="i18n" data-de="Für Firmenkunden" data-en="For business">Für Firmenkunden</a><a href="#karriere" class="i18n" data-de="Karriere" data-en="Careers">Karriere</a><a href="fahrer.html" class="i18n" data-de="Fahrerportal (Login)" data-en="Driver Portal (Login)">Fahrerportal (Login)</a><a href="admin.html" class="i18n" data-de="Admin-Panel (Login)" data-en="Admin Panel (Login)">Admin-Panel (Login)</a></div>
       <div class="fcol"><h4 class="i18n" data-de="Rechtliches" data-en="Legal">Rechtliches</h4><a href="impressum.html" class="i18n" data-de="Impressum" data-en="Legal notice">Impressum</a><a href="datenschutz.html" class="i18n" data-de="Datenschutz" data-en="Privacy">Datenschutz</a><a href="agb.html" class="i18n" data-de="AGB" data-en="Terms">AGB</a></div>
     </div>
     <div class="fbot">
@@ -460,8 +629,157 @@
     <g id="i-users"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0M16 5.5a3 3 0 0 1 0 5.6M21 20a6 6 0 0 0-4-5.6"/></g>
     <g id="i-apple"><path d="M16 13c0 3 2 4 2 4s-1.4 3-3 3c-1 0-1.5-.6-2.6-.6S11 20 10 20c-1.7 0-3-3-3-5.5C7 11 9 10 10.5 10c1 0 1.7.6 2.5.6S14.5 10 16 10c-.3.6-.5 1.6 0 3Z" fill="currentColor" stroke="none"/><path d="M13 7c.8-1 1-2 1-3" fill="none"/></g>
     <g id="i-play"><path d="M5 3.5 19 12 5 20.5V3.5Z"/></g>
+    <g id="i-chat"><path d="M4 5h16v11H9l-5 4V5Z"/><path d="M8 10h8M8 13h5"/></g>
+    <g id="i-box"><path d="M3 8l9-5 9 5-9 5-9-5Z"/><path d="M3 8v9l9 5 9-5V8"/><path d="M12 13v9"/></g>
+    <g id="i-paw"><circle cx="7" cy="9" r="2"/><circle cx="12" cy="6.5" r="2"/><circle cx="17" cy="9" r="2"/><path d="M12 12c-4 0-6 2.5-6 5.5S8.5 21 12 21s6-1.5 6-3.5S16 12 12 12Z"/></g>
+    <g id="i-wheelchair"><circle cx="9" cy="17" r="4.5"/><path d="M9 17V9h7M9 12h6l4 6"/><circle cx="17" cy="5" r="1.6" fill="currentColor" stroke="none"/></g>
+    <g id="i-lock"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></g>
+    <g id="i-crown"><path d="M4 18h16l-1-9-4 4-3-6-3 6-4-4-1 9Z"/></g>
   </defs>
 </svg>
+
+<canvas id="burstCanvas" class="burst-canvas" aria-hidden="true"></canvas>
+
+<button class="chatbot-fab" id="chatbotFab" type="button" aria-label="Support-Chat öffnen"><svg class="ic" style="width:24px;height:24px;"><use href="#i-chat"/></svg><span class="cb-dot"></span></button>
+<div class="chatbot-panel" id="chatbotPanel" role="dialog" aria-label="Support-Chat">
+  <div class="chatbot-head">
+    <div class="cb-avatar"><svg class="ic" style="width:17px;height:17px;"><use href="#i-bolt"/></svg></div>
+    <div>
+      <b>Blitz Assistent</b><br>
+      <small class="i18n" data-de="● Online" data-en="● Online">● Online</small>
+    </div>
+    <button class="chatbot-close" id="chatbotClose" type="button" aria-label="Schließen">&times;</button>
+  </div>
+  <div class="chatbot-log" id="chatbotLog"></div>
+  <div class="chatbot-suggest" id="chatbotSuggest">
+    <button type="button" data-q="preis"><span class="i18n" data-de="Preise" data-en="Prices">Preise</span></button>
+    <button type="button" data-q="gepaeck"><span class="i18n" data-de="Gepäck" data-en="Luggage">Gepäck</span></button>
+    <button type="button" data-q="kindersitz"><span class="i18n" data-de="Kindersitz" data-en="Child seat">Kindersitz</span></button>
+    <button type="button" data-q="wartezeit"><span class="i18n" data-de="Wartezeit" data-en="Wait time">Wartezeit</span></button>
+  </div>
+  <div class="chatbot-input-row">
+    <input type="text" id="chatbotInput" placeholder="Nachricht schreiben…" maxlength="200">
+    <button class="chatbot-send" id="chatbotSend" type="button" aria-label="Senden"><svg class="ic" style="width:15px;height:15px;color:#191100;"><use href="#i-arrow"/></svg></button>
+  </div>
+</div>
+
+<div class="req-overlay" id="reqOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="req-box">
+    <button class="req-close" id="reqClose" type="button" aria-label="Schließen">&times;</button>
+
+    <div class="req-stage" id="reqStageSearch">
+      <div class="req-radar">
+        <span></span><span></span><span></span>
+        <div class="req-radar-icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M13 2 L4 14 L11 14 L10 22 L20 9 L13 9 Z" fill="currentColor"/></svg></div>
+      </div>
+      <h3 id="reqSearchTitle" class="i18n" data-de="Anfrage wird gesendet…" data-en="Sending your request…">Anfrage wird gesendet…</h3>
+      <p id="reqSearchSub" class="i18n" data-de="Wir benachrichtigen verfügbare Fahrer in Ihrer Nähe." data-en="We are notifying available drivers near you.">Wir benachrichtigen verfügbare Fahrer in Ihrer Nähe.</p>
+      <div class="req-route-mini"><span id="reqFromMini">—</span> <svg class="ic ar" style="width:14px;height:14px;"><use href="#i-arrow"/></svg> <span id="reqToMini">—</span></div>
+    </div>
+
+    <div class="req-stage" id="reqStageFound" style="display:none;">
+      <div class="req-badge-ok i18n" data-de="✓ Fahrer gefunden" data-en="✓ Driver found">✓ Fahrer gefunden</div>
+      <div class="req-package-note" id="reqPackageNote"><svg class="ic" style="width:14px;height:14px;"><use href="#i-box"/></svg> <span class="i18n" data-de="Paketzustellung" data-en="Package delivery">Paketzustellung</span></div>
+      <div class="req-driver-card">
+        <div class="req-avatar" id="reqDriverInitials">MY</div>
+        <div class="req-driver-info">
+          <b id="reqDriverName">Mustafa Yilmaz</b>
+          <span id="reqDriverCar">NIO ET7 · HH-BT 2026</span>
+          <span class="req-rating">4.9 ★</span>
+        </div>
+        <div class="req-eta"><span id="reqEtaVal">4</span><small class="i18n" data-de="Min." data-en="min">Min.</small></div>
+        <button type="button" class="req-fav-btn" id="reqFavBtn" aria-label="Favorit"><svg class="ic"><use href="#i-star"/></svg></button>
+      </div>
+      <div class="req-livemap" id="reqLiveMap">
+        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 96 C 70 70, 110 100, 150 60 S 230 30, 282 24" fill="none" stroke="#37D2E6" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 8"/>
+          <circle cx="18" cy="96" r="5" fill="#37D2E6"/>
+          <circle cx="282" cy="24" r="5" fill="#F2B34B"/>
+          <g style="offset-path:path('M18 96 C 70 70, 110 100, 150 60 S 230 30, 282 24');">
+            <circle r="7" fill="#F2B34B"/><circle r="7" fill="none" stroke="#F2B34B" stroke-width="1.5"><animate attributeName="r" from="7" to="15" dur="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" from="0.5" to="0" dur="1.5s" repeatCount="indefinite"/></circle>
+          </g>
+        </svg>
+        <div class="rlm-eta"><span class="i18n" data-de="Ankunft in" data-en="Arrives in">Ankunft in</span> <b id="reqLiveEta">4 Min.</b></div>
+      </div>
+      <div class="req-extras-note" id="reqExtrasNote"></div>
+      <div class="req-tools">
+        <button class="btn btn-ghost" id="reqShareBtn" type="button"><svg class="ic" style="width:15px;height:15px;"><use href="#i-share"/></svg> <span class="i18n" data-de="Fahrt teilen" data-en="Share trip">Fahrt teilen</span></button>
+        <button class="btn btn-ghost" id="reqSafetyBtn" type="button"><svg class="ic" style="width:15px;height:15px;"><use href="#i-shield"/></svg> <span class="i18n" data-de="Sicherheit" data-en="Safety">Sicherheit</span></button>
+        <button class="btn btn-ghost" id="reqChatBtn" type="button"><svg class="ic" style="width:15px;height:15px;"><use href="#i-chat"/></svg> <span class="i18n" data-de="Chat" data-en="Chat">Chat</span></button>
+      </div>
+      <div class="req-chat-panel" id="reqChatPanel">
+        <div class="req-chat-log" id="reqChatLog"></div>
+        <div class="req-chat-quick">
+          <button type="button" data-msg-de="Ich bin unten." data-msg-en="I'm downstairs."><span class="i18n" data-de="Ich bin unten" data-en="I'm downstairs">Ich bin unten</span></button>
+          <button type="button" data-msg-de="Bin in 5 Minuten da." data-msg-en="I'll be there in 5 minutes."><span class="i18n" data-de="5 Min. noch" data-en="5 min more">5 Min. noch</span></button>
+          <button type="button" data-msg-de="Bitte kurz hupen." data-msg-en="Please honk briefly."><span class="i18n" data-de="Bitte hupen" data-en="Please honk">Bitte hupen</span></button>
+        </div>
+      </div>
+      <div class="req-safety-panel" id="reqSafetyPanel">
+        <div class="req-safety-row">
+          <div class="rs-label"><svg class="ic" style="width:16px;height:16px;"><use href="#i-lock"/></svg> <b class="i18n" data-de="Ihr Fahrt-PIN" data-en="Your ride PIN">Ihr Fahrt-PIN</b></div>
+          <span class="req-pin-code" id="reqPinCode">– – – –</span>
+        </div>
+        <div class="req-safety-row">
+          <div class="rs-label"><svg class="ic" style="width:16px;height:16px;color:#4CAF50;"><use href="#i-check"/></svg> <span class="i18n" data-de="Fahrzeug &amp; Kennzeichen geprüft" data-en="Vehicle &amp; plate verified">Fahrzeug &amp; Kennzeichen geprüft</span></div>
+          <span class="rs-ok">✓ <span class="i18n" data-de="Stimmt überein" data-en="Matches">Stimmt überein</span></span>
+        </div>
+        <div class="req-safety-row">
+          <div class="rs-label"><b class="i18n" data-de="Fahrer anrufen" data-en="Call driver">Fahrer anrufen</b></div>
+          <button type="button" class="req-call-btn" id="reqCallBtn"><span class="i18n" data-de="Nummer verborgen" data-en="Number hidden">Nummer verborgen</span></button>
+        </div>
+        <div class="req-safety-row">
+          <div class="rs-label"><b class="i18n" data-de="Notfall" data-en="Emergency">Notfall</b></div>
+          <button type="button" class="req-sos-btn" id="reqSosBtn">SOS</button>
+        </div>
+      </div>
+      <div class="req-ref"><span class="i18n" data-de="Buchungsnr." data-en="Booking ref.">Buchungsnr.</span> <b id="reqRefNo">BTX-000000</b></div>
+      <div class="req-progress"><div class="rp-fill" id="reqProgressFill"></div></div>
+      <div class="req-progress-labels">
+        <span class="i18n" data-de="Angenommen" data-en="Accepted">Angenommen</span>
+        <span class="i18n" data-de="Unterwegs" data-en="On the way">Unterwegs</span>
+        <span class="i18n" data-de="Ankunft" data-en="Arrival">Ankunft</span>
+      </div>
+      <div class="req-actions">
+        <button class="btn btn-ghost" id="reqNewBtn" type="button"><span class="i18n" data-de="Neue Fahrt buchen" data-en="Book another ride">Neue Fahrt buchen</span></button>
+        <button class="btn btn-gold" id="reqDoneBtn" type="button"><span class="i18n" data-de="Fertig" data-en="Done">Fertig</span></button>
+      </div>
+    </div>
+
+    <div class="req-stage" id="reqStageRating" style="display:none;">
+      <div class="req-badge-ok i18n" data-de="✓ Fahrt abgeschlossen" data-en="✓ Ride completed">✓ Fahrt abgeschlossen</div>
+      <h3 id="reqRatingTitle" class="i18n" data-de="Wie war Ihre Fahrt?" data-en="How was your ride?">Wie war Ihre Fahrt?</h3>
+      <p class="i18n" data-de="Ihre Bewertung hilft uns und dem Fahrer." data-en="Your rating helps us and the driver.">Ihre Bewertung hilft uns und dem Fahrer.</p>
+      <div class="req-stars" id="reqStars">
+        <span class="rstar" data-val="1">★</span><span class="rstar" data-val="2">★</span><span class="rstar" data-val="3">★</span><span class="rstar" data-val="4">★</span><span class="rstar" data-val="5">★</span>
+      </div>
+      <textarea class="req-comment" id="reqComment" placeholder="Kommentar (optional)"></textarea>
+      <div class="req-actions">
+        <button class="btn btn-gold" id="reqRatingSendBtn" type="button" style="flex:1;justify-content:center;"><span class="i18n" data-de="Bewertung senden" data-en="Submit rating">Bewertung senden</span></button>
+      </div>
+      <button class="req-skip" id="reqRatingSkipBtn" type="button"><span class="i18n" data-de="Überspringen" data-en="Skip">Überspringen</span></button>
+    </div>
+
+    <div class="req-stage" id="reqStageScheduled" style="display:none;">
+      <div class="req-badge-ok i18n" data-de="✓ Vorbestellung bestätigt" data-en="✓ Advance booking confirmed">✓ Vorbestellung bestätigt</div>
+      <p class="i18n" data-de="Ihre Fahrt ist reserviert. Sie erhalten die Fahrerdetails ca. 30 Minuten vor Abholung per SMS." data-en="Your ride is reserved. You will receive the driver's details by SMS about 30 minutes before pickup.">Ihre Fahrt ist reserviert. Sie erhalten die Fahrerdetails ca. 30 Minuten vor Abholung per SMS.</p>
+      <div class="req-route-mini"><span class="i18n" data-de="Termin:" data-en="Scheduled for:">Termin:</span>&nbsp;<b id="reqSchedTime">—</b></div>
+      <div class="req-ref" style="margin-top:14px;"><span class="i18n" data-de="Buchungsnr." data-en="Booking ref.">Buchungsnr.</span> <b id="reqRefNo2">BTX-000000</b></div>
+      <div class="req-actions">
+        <button class="btn btn-ghost" id="reqNewBtn2" type="button"><span class="i18n" data-de="Neue Fahrt buchen" data-en="Book another ride">Neue Fahrt buchen</span></button>
+        <button class="btn btn-gold" id="reqDoneBtn2" type="button"><span class="i18n" data-de="Fertig" data-en="Done">Fertig</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite">
+  <p class="i18n" data-de="Wir verwenden Cookies, um diese Website bestmöglich für Sie zu gestalten und unseren Service kontinuierlich zu verbessern. Weitere Informationen finden Sie in unserer <a href=&quot;datenschutz.html&quot;>Datenschutzerklärung</a>." data-en="We use cookies to make this website work best for you and to continuously improve our service. More information is available in our <a href=&quot;datenschutz.html&quot;>privacy policy</a>.">Wir verwenden Cookies, um diese Website bestmöglich für Sie zu gestalten und unseren Service kontinuierlich zu verbessern. Weitere Informationen finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+  <div class="cookie-actions">
+    <button type="button" class="btn btn-gold" id="cookieAcceptAll" style="padding:11px 20px;font-size:.85rem;"><span class="i18n" data-de="Alle akzeptieren" data-en="Accept all">Alle akzeptieren</span></button>
+    <button type="button" class="btn btn-ghost" id="cookieEssentialOnly" style="padding:11px 20px;font-size:.85rem;"><span class="i18n" data-de="Nur essenzielle" data-en="Essential only">Nur essenzielle</span></button>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 
